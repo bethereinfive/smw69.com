@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-3 p-0" style="width: 20% !important;">
                         <div class="menu">
-                            <a :href="$asseturl+'VNSHOPIE_Earn_Money.apk'">
+                            <a :href="$asseturl+'SMW.apk'">
                                 <i class="fa-solid fa-mobile"></i>
                                 <p>App</p>
                             </a>
