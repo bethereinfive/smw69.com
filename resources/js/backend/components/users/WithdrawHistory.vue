@@ -2,29 +2,36 @@
     <div>
 
 
-        <div class="layout-content" style="margin-bottom: 100px;">
-            <div class="van-nav-bar van-nav-bar--fixed mb-5">
-                <div class="van-nav-bar__content"><div class="van-nav-bar__title van-ellipsis">প্রত্যাহার ইতিহাস </div></div>
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>{{ $t('Withdraw_History.value') }}</p>
+                <LanguageComponent/>
             </div>
+        </section>
 
 
 
 
-
-        <section id="listmenus" style="margin-top: 60px;">
+        <section id="listmenus">
 
 
 
             <div role="feed" class="van-list row" aria-busy="true">
-                <div class="recordDiv col-md-12" v-for="rech in row" :key="'rech'+rech.id">
+                <div class="recordDiv col-md-6" v-for="rech in row" :key="'rech'+rech.id">
 
 
-                    <div class="card text-white"  style="background: #483b2e00;font-size: 16px;margin: 17px;margin-bottom: 20px">
+                    <div class="card text-white" :style="[rech.status=='pending' ? {'background': 'red'} : {'background': 'green'}]" style="margin-bottom: 20px">
+                        <div class="card-header">
+                            <h5 class="card-title">{{ $t('Recharge_amount.value') }} {{ rech.amount }} </h5>
+                        </div>
                         <div class="card-body">
-                            <p  style="color:#ff7d7d;margin: 0;">{{ dateformatglobal(rech.created_at)[6] }}</p>
-                            <p  style="color:#40c140;margin: 0;">ব্যাংক নম্বর : {{ rech.recieved_number }}</p>
-                            <p  style="color:#ff0000;margin: 0;">পরিমাণ : {{ rech.amount }}</p>
-                            <p  style="color:#2086c1;margin: 0;">অবস্থা :  {{ rech.status }}</p>
+                            <p>{{ $t('Order_Number.value') }} : {{ rech.trx }}</p>
+                    <p>{{ $t('Recharge_status.value') }} :  {{ rech.status }}</p>
+                    <p>{{ $t('Date.value') }} : {{ dateformatglobal(rech.created_at)[6] }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <p>{{ $t('Remarks.value') }} :- {{ rech.admin_feedback }}</p>
                         </div>
                     </div>
 
@@ -34,9 +41,21 @@
             </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="not-found">No Data</div> -->
         </section>
 
-    </div>
     </div>
 </template>
 

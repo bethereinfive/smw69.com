@@ -2,162 +2,124 @@
     <div>
 
 
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)" ><i class="fa fa-angle-left"></i></a>
+                <p>{{ $t('My_Account.value') }}</p>
+                <LanguageComponent/>
+            </div>
+        </section>
+
+
+        <section class="accontDetails">
+            <div class="row">
+                <div class="col-md-6">
+
+
+                            <h6 class="card-title">{{ $t('Name.value') }} : {{ row.user.name }}</h6>
+                            <h6 class="card-title">{{ $t('Plan.value') }} : {{ row.plans.name }}</h6>
+                            <h6 class="card-title">{{ $t('Invitation_code.value') }} : {{ row.user.username }}</h6>
+
+                </div>
+                <div class="col-md-6">
+
+                            <h6 class="card-title">{{ $t('Task_income.value') }} : {{ parseFloat(row.taskearn).toFixed(2) }}</h6>
+                            <h6 class="card-title">{{ $t('Balance.value') }} : {{ parseFloat(row.user.balance).toFixed(2) }}</h6>
+
+
+                </div>
+            </div>
+        </section>
 
 
 
 
+<!--
+        <section id="btn-area">
+
+            <div class="row">
+                <div class="col-6 p-0"> <router-link :to="{name:'Recharge'}">{{ $t('Recharge.value') }}</router-link></div>
+                <div class="col-6 p-0"> <router-link :to="{name:'Withdraw'}">{{ $t('Withdraw.value') }}</router-link></div>
+            </div>
 
 
+        </section> -->
+        <section id="accounDetlist">
+            <!-- <div class="container-fluid"> -->
+
+                <ul>
+                    <li><router-link :to="{name:'license'}" class="accountList odd listCompanny " >
+                        <i class="fa-solid fa-address-card"></i>
+                            <p>{{ $t('Company_Profile.value') }}</p></router-link>
+                    </li>
+
+                    <li><router-link :to="{name:'information'}" class="accountList even listInformaion">
+                        <i class="fa-solid fa-id-card"></i>
+                        <p>{{ $t('Information.value') }}</p>
+                        </router-link></li>
+                    <li><router-link :to="{name:'orders'}" class="accountList odd listorder">
+                        <i class="fa-solid fa-list-check"></i>
+                        <p>{{ $t('Order_Record.value') }}</p>
+                        </router-link></li>
+                    <li><router-link :to="{name:'rechargeHistory'}" class="accountList even listReHis">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <p>{{ $t('Recharge_History.value') }}</p>
+                        </router-link></li>
+                    <li><router-link :to="{name:'WithdrawHistory'}" class="accountList odd listWithHis">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                            <p>{{ $t('Withdraw_History.value') }}</p>
+                        </router-link></li>
+                    <!-- <li><router-link :to="{name:'help'}"><img :src="$asseturl+'frontend/img/ann.png'">
+                            <p>Announcement</p>
+                        </router-link></li> -->
+
+                    <li><router-link :to="{name:'invite'}" class="accountList even listInvite">
+                        <i class="fa-solid fa-user-plus"></i>
+                            <p>{{ $t('Invite.value') }}</p>
+                        </router-link></li>
+
+                    <li v-if="settings.telegroup"><a :href="settings.telegroup" class="accountList odd listTeleGroup" target="_blank">
+                        <i class="fa-brands fa-telegram"></i>
+                            <p>{{ $t('Official_Telegram_Group.value') }}</p>
+                        </a></li>
+
+                    <li v-if="settings.telesupport1"><a :href="settings.telesupport1" class="accountList even listCus1" target="_blank">
+                        <i class="fa-solid fa-headset"></i>
+                            <p>Official Telegram Channel</p></a>
+                    </li>
+
+                    <li v-if="settings.telesupport2"><a :href="settings.telesupport2" class="accountList odd listCus2" target="_blank">
+                        <i class="fa-solid fa-headset"></i>
+                            <p>{{ $t('Customer_Service.value') }} 1</p></a>
+                    </li>
+
+                    <li v-if="settings.telesupport3"><a :href="settings.telesupport3" class="accountList even listCus3" target="_blank">
+                        <i class="fa-solid fa-headset"></i>
+                            <p>{{ $t('Customer_Service.value') }} 2</p></a>
+                    </li>
 
 
-           <div data-v-7b9eb5e9="">
-                            <div data-v-7b9eb5e9="" class="container justify-content-center align-items-center" style="margin-top: 2.3rem;">
-                                <div data-v-7b9eb5e9="" class="card" style="display: inline;">
+<!--
+                    <li><a href="https://t.me/DreamlandcustomerSurvice2" target="_blank"><img :src="$asseturl+'frontend/img/supGroup.jpeg'">
+                            <p>Customer Service 2</p></a>
+                    </li> -->
+
+                    <!-- <li><a href="https://t.me/markosuportmanager" target="_blank"><img :src="$asseturl+'frontend/img/supGroup.jpeg'">
+                            <p>Support Manager</p>
+                        </a></li> -->
 
 
+                </ul>
+                <router-link :to="{name:'logout'}" class="logout">{{ $t('Log_out.value') }}</router-link>
+            <!-- </div> -->
 
 
-
-                                    <div data-v-7b9eb5e9="" class="user text-center">
-                                        <div data-v-7b9eb5e9="" class="" style="display: flex;align-items: center;">
-
-                                            <img data-v-7b9eb5e9="" src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"  style="border: 1px solid #00000040;
-    width: 75px;
-    height: 75px;
-    margin-right: 10px;
-    padding: 3px;" class="rounded-circle" />
-                                            <div class="userinfo">
-                                                <h4 data-v-7b9eb5e9="" class="mb-0">{{ row.user.name }}</h4>
-                                                <span data-v-7b9eb5e9="" class="text-muted d-block mb-2">{{ row.user.mobile }}</span>
-                                            </div>
-
-                                        </div>
-                                        <button data-v-7b9eb5e9="" class="btn bg-c-lite-green btn-sm btn-shape follow inviteButton" style="border-radius: 0px 40px;">Invitation Code: {{ row.user.username }}</button>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div data-v-7b9eb5e9="" class="container mb-5">
-                                <div data-v-7b9eb5e9="" class="row" style="width: 100%; margin-left: 0%;">
-                                    <div data-v-7b9eb5e9="" class="shortcut mb-3 text-center" style="border-left: 2px solid rgb(243, 243, 243);    width: 50% !important;">
-                                        <img data-v-7b9eb5e9="" src="https://freepngimg.com/thumb/money/49292-1-wealth-image-png-free-photo-thumb.png" width="25px" />
-                                        <div data-v-7b9eb5e9="" class="icon_title">Balance</div>
-                                        <div data-v-7b9eb5e9="" class="icon-ammount">
-                                            BDT {{ parseFloat(row.user.balance).toFixed(2) }}
-                                        </div>
-                                    </div>
-                                    <div data-v-7b9eb5e9="" class="shortcut mb-3 text-center" style="width: 50% !important;">
-                                        <img data-v-7b9eb5e9="" src="https://cdn-icons-png.flaticon.com/512/5501/5501360.png" width="25px" />
-                                        <div data-v-7b9eb5e9="" class="icon_title">Today Earnig</div>
-                                        <div data-v-7b9eb5e9="" class="icon-ammount">
-                                            BDT {{ parseFloat(row.taskearn).toFixed(2) }}
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-<h3 class="MenuHeadLine">Informations ----</h3>
-    <div class="menuLink">
-        <div class="d-flex justify-content-between">
-
-            <router-link :to="{name:'bankAccount'}" class="iconTex text-center">
-                <i class="fa-solid fa-money-bill-transfer text-danger mx-2"></i>
-                <span>Bank  <br/>Account</span>
-            </router-link>
-
-            <router-link :to="{name:'teamMember'}" class="iconTex text-center">
-                <i class="fa-solid fa-chart-line text-success mx-2"></i>
-                <span>Team <br/>Report</span>
-            </router-link>
-
-            <router-link :to="{name:'invite'}" class="iconTex text-center">
-                <i class="fa-solid fa-square-share-nodes text-primary mx-2"></i>
-                <span>Invite <br/>Friend</span>
-            </router-link>
-
-
-
-        </div>
-    </div>
-
-
-    <h3 class="MenuHeadLine">Reports ----</h3>
-
-    <div class="menuLink">
-        <div class="d-flex justify-content-between">
-
-            <router-link :to="{name:'orders'}" class="iconTex text-center">
-                <i class="fa-solid fa-chart-line text-success mx-2"></i>
-                <span>Records</span>
-            </router-link>
-
-            <router-link :to="{name:'rechargeHistory'}" class="iconTex text-center">
-                <i class="fa-solid fa-money-bill-transfer text-danger mx-2"></i>
-                <span>Topup <br/>History</span>
-            </router-link>
-
-            <router-link :to="{name:'WithdrawHistory'}" class="iconTex text-center">
-                <i class="fa-solid fa-money-bill-transfer text-danger mx-2"></i>
-                <span>Cash Out <br/>History</span>
-            </router-link>
-
-
-
-        </div>
-    </div>
-    <hr/>
-
-    <router-link :to="{name:'logout'}" class="LogoutBtn"><i class="fa-solid fa-arrow-right-from-bracket text-warning mx-2"></i> Log Out </router-link>
-
-
-
-
-
-                                <!-- <ul data-v-7b9eb5e9="" class="list-group">
-
-                                    <li data-v-7b9eb5e9="" class="list-group-item">
-                                        <router-link :to="{name:'teamMember'}" class=""><i data-v-7b9eb5e9="" class="fa-solid fa-chart-line text-success mx-2"></i> Team Report </router-link>
-                                    </li>
-
-                                    <li data-v-7b9eb5e9="" class="list-group-item">
-                                        <router-link :to="{name:'bankAccount'}" class=""><i data-v-7b9eb5e9="" class="fa-solid fa-money-bill-transfer text-danger mx-2"></i>Bank Account </router-link>
-                                    </li>
-
-                                    <li data-v-7b9eb5e9="" class="list-group-item">
-                                        <router-link :to="{name:'rechargeHistory'}" class=""><i data-v-7b9eb5e9="" class="fa-solid fa-money-bill-transfer text-danger mx-2"></i>Topup History </router-link>
-                                    </li>
-
-                                    <li data-v-7b9eb5e9="" class="list-group-item">
-                                        <router-link :to="{name:'WithdrawHistory'}" class=""><i data-v-7b9eb5e9="" class="fa-solid fa-money-bill-transfer text-danger mx-2"></i>Cash Out History </router-link>
-                                    </li>
-                                    <li data-v-7b9eb5e9="" class="list-group-item">
-                                        <router-link :to="{name:'invite'}" class=""><i data-v-7b9eb5e9="" class="fa-solid fa-square-share-nodes text-primary mx-2"></i> Invite Friend </router-link>
-                                    </li>
-
-                                    <li data-v-7b9eb5e9="" class="list-group-item">
-                                        <a data-v-7b9eb5e9="" :href="$asseturl+'_DMMART_16520202.apk'"><i data-v-7b9eb5e9="" class="fa-solid fa-cloud-arrow-down mx-2"></i> App Download Link </a>
-                                    </li>
-
-                                    <li data-v-7b9eb5e9="" class="list-group-item" style="padding-bottom: 2rem;">
-                                        <router-link :to="{name:'logout'}"><i data-v-7b9eb5e9="" class="fa-solid fa-arrow-right-from-bracket text-warning mx-2"></i> Log Out </router-link>
-                                    </li>
-                                </ul> -->
-                            </div>
-                        </div>
-
-
+        </section>
 
     </div>
 </template>
 <script>
-
-import { ButtonCopy,ButtonTelegram  } from 'share-button-links/components/buttons';
 export default {
-    components:{
-        ButtonCopy,ButtonTelegram
-    },
     data(){
         return {
             settings:{},
@@ -196,62 +158,10 @@ export default {
 }
 </script>
 
-<style scoped>
-a.LogoutBtn {
-    width: 100%;
-    display: block;
-    padding: 8px 5px;
-    border: 1px solid #b3b3b3;
-    text-align: center;
-    background: #0077C3;
-    color: white;
-    text-decoration: none;
-}
+<style>
 
-a.iconTex.text-center {
-    border: 1px solid #b9b9b9;
-    padding: 8px 6px;
-    width: 85px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #0077C3;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-a.iconTex.text-center i {
-
-
-
-    font-size: 35px;
-}
-
-.MenuHeadLine{
-    border-bottom: 1px solid #646464;
-    padding: 10px 0px;
-    color: #646464;
-}
-.inviteButton{
-    border-radius: 0px 40px;
-    border: 1px solid #ff2323;
-    padding: 4px 17px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 10px;
-}
-.profileLinks i {
-    font-size: 31px;
-    padding: 10px;
-}
-.profileLinks {
-    font-size: 12px;
-    color: white;
-    margin: 14px 3px;
-}
 section.accontDetails {
-    background: #008dff;
+    background: #005AAB;
     color: white;
     padding: 32px 16px;
     margin-top: -40px;
@@ -262,11 +172,12 @@ a.accountList {
 }
 
 a.accountList.odd {
-    background: #003cff !important;
+    background: #ED1C24 !important;
+
 }
 
 a.accountList.even {
-    background: #af5016 !important;
+    background: #005AAB !important;
 }
 
 

@@ -1,49 +1,44 @@
 <template>
     <div>
 
-        <div class="layout-content" style="margin-bottom: 100px;">
-            <div class="van-nav-bar van-nav-bar--fixed mb-5">
-                <div class="van-nav-bar__content"><div class="van-nav-bar__title van-ellipsis">পাসওয়ার্ড পরিবর্তন করুন</div></div>
+
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>{{ $t('Password_Management.value') }}</p>
+                <LanguageComponent/>
             </div>
+        </section>
+
+        <section id="account-form">
+
+                <div class="long-title">
+                    <p style="    background: red;
+    color: white;">{{ $t('Change_the_login_password.value') }}</p>
+                </div>
+
+                <div class="container-fluid">
+                     <form @submit.stop.prevent="accountPassChange">
+                    <label> {{ $t('Old_password.value') }}</label>
+                    <input type="password" class="form-control" v-model="accountPass.old" required :placeholder="$t('Please_enter_the_old_password.value')">
 
 
+                    <label>{{ $t('New_password.value') }}</label>
+                    <input type="password" class="form-control" v-model="accountPass.newpass" required :placeholder="$t('Please_enter_new_login_password.value')">
 
 
+                    <label>{{ $t('Confirm_password.value') }}</label>
+                    <input type="password" class="form-control" v-model="accountPass.confirm" required :placeholder="$t('Please_enter_new_password_again.value')">
 
-            <section id="account-form"  style="margin-top:60px">
-
-
-
-<div class="container-fluid">
-     <form @submit.stop.prevent="accountPassChange">
-    <label> {{ $t('Old_password.value') }}</label>
-    <input type="password" class="form-control" v-model="accountPass.old" required :placeholder="$t('Please_enter_the_old_password.value')">
-
-
-    <label>{{ $t('New_password.value') }}</label>
-    <input type="password" class="form-control" v-model="accountPass.newpass" required :placeholder="$t('Please_enter_new_login_password.value')">
-
-
-    <label>{{ $t('Confirm_password.value') }}</label>
-    <input type="password" class="form-control" v-model="accountPass.confirm" required :placeholder="$t('Please_enter_new_password_again.value')">
-
-    <input type="submit" class="money-btn" style="padding: 8px 14px;font-size: 15px;color: white;" :value="$t('Confirm_to_modify_the_login_password.value')">
+                    <input type="submit" class="savedata" :value="$t('Confirm_to_modify_the_login_password.value')">
 
 </form>
-</div>
+                </div>
 
 
 
 
-</section>
-
-
-            </div>
-
-
-
-
-
+        </section>
 
 
     </div>

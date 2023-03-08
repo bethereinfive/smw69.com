@@ -1,63 +1,63 @@
 <template>
     <div>
-
-        <div data-v-754c2e37="" v-if="!orderpage">
-                            <div data-v-754c2e37="" class="container2 mt-5">
-
-                                <div data-v-754c2e37="" class="row" style="margin-bottom: 150px;">
-
-
-                                    <div data-v-754c2e37="" class="col-md-6" v-for="(product,index) in products" :key="index" >
-                                                <div data-v-754c2e37="" class="product-border">
-                                                    <div data-v-754c2e37="" class="single-product-item">
-                                                        <a data-v-754c2e37="" href="javascript:void(0)" class="product-name">
-                                                            <img data-v-754c2e37="" :src="product.Images" class="lazy" />
-                                                        </a>
-                                                    </div>
-                                                    <div data-v-754c2e37="" class="product-details">
-                                                        <a data-v-754c2e37="" href="javascript:void(0)" class="product-name">
-                                                            {{ product.title }}
-                                                        </a>
-                                                        <p data-v-754c2e37="" style="color: rgb(1, 169, 172);">
-                                                            {{ product.price }} Tk
-
-                                                        </p>
-                                                        <div data-v-754c2e37="" class="text-center"><button data-v-754c2e37="" type="button" class="btn btn-info btn-sm btn-submit" @click="recievefun(product)">Buy Now</button></div>
-                                                    </div>
-                                                </div>
-                                    </div>
-
-
-
-                                </div>
+        <section id="orderpage">
+            <div class="container-fluid">
+                <h2></h2>
+            </div>
+        </section>
+        <section id="topbar">
+            <div class="title">
+                <p>Orders</p>
+                <router-link :to="{name:'orders'}"><img :src="$asseturl + 'frontend/img/tasks.png'" alt="logo"></router-link>
+            </div>
+        </section>
+        <!-- <section id="banner">
+            <h3>ORDERS</h3>
+            <p>Automatic order mode</p>
+        </section> -->
+        <section class="text-center position-relative" v-if="!orderpage">
+            <img style="width:98%" :src="$asseturl + 'img/215.png'" alt="">
+            <div class="orderamount" v-if="receive">Tk {{ random }}</div>
+        </section>
+        <section class="text-center position-relative" v-if="!orderpage">
+            <button class="OrderReceive" v-if="receive">Receive</button>
+            <button class="OrderReceive" v-else @click="recievefun">Receive</button>
+        </section>
+        <section id="taskdetails" v-if="!orderpage">
+            <div class="container-fluid">
+                <h4>Today's results</h4>
+                <div class="shadow">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="data c">
+                                <p>Total assets（TK）</p>
+                                <div class="tk"> TK {{ row.user.balance }} </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container" style="padding-top: 75px !important;width: 80%;">
-
+                        <div class="col-6">
+                            <div class="data">
+                                <p>Today's orders</p>
+                                <div class="tk"> {{ row.user.task }} Orders </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="data">
+                                <p>Today earnings</p>
+                                <div class="tk"> TK {{ parseFloat(row.todayearn).toFixed(2) }}</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="data">
+                                <p>Yesterday earnings</p>
+                                <div class="tk"> TK {{ row.YesterdayEarn }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="m-5"></section>
+                    <section class="m-5"></section>
+                </div>
+            </div>
+        </section>
         <section class="text-center position-relative" v-if="orderpage">
             <img style="width:45%" :src="taskProduct" alt="">
         </section>
@@ -86,8 +86,8 @@
                 </div>
             </div>
         </section>
-
-    </div>
+        <section class="m-5"></section>
+        <section class="m-5"></section>
     </div>
 </template>
 <script>
@@ -96,17 +96,6 @@ export default {
         this.getData();
 
 
-        if(User.dateformat()[9]<=23){
-            if(User.dateformat()[9]>=10){
-                // this.$router.push({ name: 'Authuser' });
-            }else{
-                alert('কাজের সময় সকাল ১০:০০ থেকে রাত ১২:০০ টা পর্যন্ত')
-                this.$router.push({ name: 'Authuser' });
-            }
-        }else{
-            alert('কাজের সময় সকাল ১০:০০ থেকে রাত ১২:০০ টা পর্যন্ত')
-            this.$router.push({ name: 'Authuser' });
-        }
 
     },
     data() {
@@ -120,8 +109,20 @@ export default {
             form: {
                 task_comisition: 0
             },
-            products:{},
-
+            products: [
+                // 'mainproduct.jpeg',
+                '1.jpeg',
+                '2.jpeg',
+                '3.jpeg',
+                '4.jpeg',
+                '5.jpeg',
+                '6.jpeg',
+                '7.jpeg',
+                '8.jpeg',
+                '9.jpeg',
+                '10.jpeg',
+                '11.jpeg',
+            ],
             taskProduct:'',
         }
     },
@@ -131,31 +132,32 @@ export default {
             this.orderpage = false;
             this.getData();
         },
-        recievefun(product) {
+        recievefun() {
             this.receive = true
             if (Number(this.row.user.task) < 1) {
                 Notification.customError(`You Can't Complete any order Today`);
                 this.receive = false
             } else {
 
-                this.taskProduct = product.Images
-                this.random = product.price
-
+                let randomnumber = setInterval(() => {
+                    this.random = Math.floor(Math.random() * (1000000000000 - 1 + 1)) + 1
+                }, 50);
+                setTimeout(() => {
+                    this.random = Math.floor(Math.random() * (this.row.user.balance - 1 + 1)) + 1
+                    clearInterval(randomnumber);
+                    this.orderpage = true
                     var task_comisition = ((this.row.user.balance * this.row.plans.comission_rate) / 100);
                     this.form.task_comisition = parseFloat(task_comisition).toFixed(2)
-                    this.orderpage = true;
 
+const random = Math.floor(Math.random() * this.products.length);
+    this.taskProduct = this.$asseturl + 'img/'+this.products[random];
+// console.log(random, this.products[random]);
 
+                }, 3000);
             }
         },
         async getData() {
             var id = localStorage.getItem('userid');
-
-
-
-            var resb = await this.callApi('get',`/api/get/blog/list`,[])
-              this.products = resb.data
-
             var res = await this.callApi('get', `/api/admin/user/${id}`, []);
             this.row = res.data;
         },
@@ -171,10 +173,8 @@ export default {
 
             Notification.customSuccess('Task Completed');
         }
-        console.log( this.balanceshow);
-        this.balanceshow = false
-        this.TryAgain();
 
+        this.TryAgain();
     }
 
 

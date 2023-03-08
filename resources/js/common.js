@@ -6,10 +6,7 @@ export default {
     data(){
         return {
             // settings:{},
-            Frontloader:false,
-            user:{},
-            balanceshow:false,
-
+            Frontloader:false
         }
     },
     methods: {
@@ -46,16 +43,7 @@ export default {
                 return e.response
             }
         },
-        showbalance(){
-            this.balanceshow = true
-            this.checkbalance();
-        },
 
-        async checkbalance(){
-            var id = localStorage.getItem('userid');
-            var results = await this.callApi('get', `/api/admin/user/${id}`, []);
-            this.user = results.data;
-        },
         // async settingFun(){
 
 

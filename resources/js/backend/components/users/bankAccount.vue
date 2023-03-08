@@ -1,19 +1,20 @@
 <template>
     <div>
-
-
-
-
-        <div class="layout-content" style="margin-bottom: 100px;">
-            <div class="van-nav-bar van-nav-bar--fixed mb-5">
-                <!-- <div class="van-nav-bar__content"><div class="van-nav-bar__title van-ellipsis">ব্যাংক তথ্য</div></div> -->
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>{{ $t('Bank_Card.value') }}</p>
+                <LanguageComponent />
             </div>
-
-
-            <section id="account-form" style="margin-top:60px">
+        </section>
+        <section id="account-form">
             <form @submit.stop.prevent="onSubmit">
 
 
+                <div class="long-title">
+                    <p style="    background: red;
+    color: white;">{{ $t('Please_input_bank_account_information.value') }} </p>
+                </div>
                 <div class="container-fluid">
                     <div class="form-group">
                         <label>{{ $t('Bank_Name.value') }}</label>
@@ -25,7 +26,7 @@
                 </div>
                 <div class="container-fluid">
                     <div class="form-group">
-                        <label><span class="require">*</span> {{ $t('Bank_account.value') }} (Bkash/Nagod/Roket)</label>
+                        <label><span class="require">*</span> {{ $t('Bank_account.value') }} (Bkash/Nagod/USDT)</label>
                         <input type="text" v-model="row.user.Bank_account" class="form-control"
                             placeholder="Please add an account" :readonly="readonly" required>
                     </div>
@@ -33,29 +34,12 @@
 
                 <div class="container-fluid">
 
-
+                    <input type="checkbox" class="checkbox"><span>{{ $t('agr.value') }}</span>
                     <p class="det">{{ $t('BW.value') }}</p>
-                    <input type="submit" class="money-btn" style="padding: 8px 14px;font-size: 23px;color: white;" value="Save information">
+                    <input type="submit" class="savedata" value="Save information">
                 </div>
             </form>
         </section>
-
-
-
-
-
-
-
-            </div>
-
-
-
-
-
-
-
-
-
     </div>
 </template>
 <script>

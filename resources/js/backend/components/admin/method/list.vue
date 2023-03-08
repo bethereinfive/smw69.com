@@ -49,7 +49,7 @@ export default {
             access: '',
             sortstatus: false,
             Filter: true,
-            FilterOn: false,
+            FilterOn: [],
             PerPage: false,
             tableloader: false,
             deleteRoute: '',

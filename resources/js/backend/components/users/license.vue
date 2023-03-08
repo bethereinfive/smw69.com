@@ -14,26 +14,34 @@
         <div class="container-fluid">
             <pre>
 
-Completely foreign site
-JMY EARN MONEY Welcome to you
+Totally Foregin Site
+Welcome to VNSHOPIE Earn Money
 
-200 taka bonus if account.
-You can work for free by watching work videos.
-You will get 5 rupees per refer.
+100 Rupees bonus on account.
+You can work for free by watching videos.
 
-Minimum deposit 300 taka
-Minimum withdrawal 500 taka
-You will receive payment in 24 hours.
-development or cash
+Minimum deposit is Rs.300
+Minimum withdrawal is Rs.200
+You will receive the payment within 24 hours.
+Bkash, Nagad or rocket.
 
-Work time:
-2PM to 12AM.
-Winthdraw time is 2pm to 6pm
-Deposit time is 24 hours.
+Working hours:
+10 AM TO 12 AM.
 
-We deal directly with YouTube and earn profits from them, so you can earn more by investing here.
-I can work with us for 2 years. Thank you
+Withdrawal Time:
+10 AM TO 5PM
 
+The order will reach your wallet within 1-24 hours from the time of payment.
+
+Withdrawal Charge: 5%
+
+We deal directly with YouTube and earn profit from them, so you can earn more by investing here.
+
+You can withdraw your investment money at the end of the term.
+
+You can work with us for 2 years.
+thank you.
+Expiration date is 10 February 2025
             <img :src="$asseturl+'frontend/img/Task.png?ver=1.0'" style="width:50%" alt="">
 
 

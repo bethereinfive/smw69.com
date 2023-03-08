@@ -1,54 +1,73 @@
 <template>
     <div>
-
-
-
-        <div class="layout-content" style="    margin-bottom: 100px;">
-            <div class="van-nav-bar van-nav-bar--fixed mb-5">
-                <!-- <div class="van-nav-bar__content"><div class="van-nav-bar__title van-ellipsis">প্রত্যাহার </div></div> -->
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>Withdraw</p>
+                <LanguageComponent/>
             </div>
+        </section>
+        <section id="reclist">
+            <div class="details">
+                <div class="container-fluid">
+                    <div v-if="step == 1">
 
-            <h4 class="mt-5 pl-3" style="padding-left: 20px;">ব্যাংক প্রত্যাহার</h4>
-
-            <div class="bank_datails">
-
-                <div class="bank_details_list">
-                    <span>ব্যাংকের নাম</span>
-                    <select  v-model="form.method"  disabled required>
+                        <div class="form-group">
+                            <label for="">Withdraw Method</label>
+                            <select class="form-control" v-model="form.method" @change="charageCount" disabled required>
                                 <option value="">Select</option>
                                 <option v-for="pay in row" :to="{ name: 'RechargePage', params: { method: pay.id } }"
                                     :key="'pay' + pay.id" :value="pay.id">{{  pay.name  }}</option>
                             </select>
+                        </div>
+                        <div class="form-group mb-3" v-if="gateways">
+                            <label for="">{{  gateways.name  }} Number</label>
+                            <input type="number" class="form-control" v-model="form.recieved_number" disabled readonly>
+                        </div>
 
-                    <!-- <span>{{ form.method }}</span> -->
+                        <div class="form-group">
+                            <label for="">Withdraw Amount</label>
+                            <input type="tel" class="form-control" @input="checkAmount(form.amount)"
+                                v-model="form.amount">
+                        </div>
+                        <p> Available Balance : {{  user.user.balance - settings.new_regitration  }} </p>
+                        <!-- <div class="row">
+                            <div class="col-6 amount_item" @click="checkAmount(500)"><span>500</span> </div>
+                            <div class="col-6 amount_item" @click="checkAmount(1000)"><span>1000</span></div>
+                        </div> -->
+
+                        <div class="text-center">
+                            <button class="btn btn-info" v-if="bankcardAlert" disabled >Wait...</button>
+                            <button class="btn btn-info" v-else @click="nextFun(2)">Next</button>
+                        </div>
+                        <p style="color: #005AAB;text-align: center;font-size: 17px;">Make sure to set the withdrawal amount correctly before withdrawing. Give like this 200 300 400 500. </p>
+                        <p style="color: #005AAB;text-align: center;font-size: 17px;">This is wrong 210 310 423 547 If you give it like this you will not get payment❌</p>
+                        <p style="color: #005AAB;text-align: center;font-size: 17px;">Receive payment within 1-24 hours. Thank you</p>
+                    </div>
+                    <form @submit.stop.prevent="onSubmit" v-else-if="step == 2">
+                        <h4 class="d-block bg-success text-white p-1 my-3">Payment Info</h4>
+                        <div class="patment_info">
+                            <ul class="list-unstyled">
+                                <li class="li"><span>{{  gateways.name  }} Account</span><span>{{  form.recieved_number
+                                        }}</span></li>
+                                <li class="li"><span>Amount</span><span>{{  form.amount  }}</span></li>
+                                <li class="li"><span>Charge</span><span>{{  charge  }}</span></li>
+                                <li class="li"><span>Payable Amount</span><span>{{  Payable  }}</span></li>
+                                <li class="li"><span>New balance</span><span>{{  balance  }}</span></li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-secondary" @click="nextFun(1)">Previous</button>
+
+                            <button class="btn btn-info" type="button" disabled v-if="con">Wait....</button>
+                            <button class="btn btn-info" type="submit" v-else>Confirm Withdraw</button>
+
+                        </div>
+                    </form>
+                    <!-- <router-link v-for="pay in row" :to="{name:'RechargePage',params:{method:pay.id}}" :key="'pay'+pay.id"><img :src="pay.image"></router-link> -->
                 </div>
-
-                <div class="bank_details_list">
-                    <span>কার্ড নম্বর</span>
-                    <span>{{ form.recieved_number }}</span>
-                </div>
-
             </div>
-            <h4 class="pl-3" style="padding-left: 20px;">অ্যাকাউন্ট ব্যালান্সঃ {{  user.user.balance - settings.new_regitration  }}</h4>
-
-            <div class="bank_datails" style="padding: 28px 11px;">
-
-                <div class="form-group">
-                    <label for="">প্রত্যাহারের পরিমাণ</label>
-                    <input type="tel" class="form-control" @input="checkAmount(form.amount)" v-model="form.amount">
-                </div>
-            </div>
-            <!-- প্রত্যাহার সময় সকাল ১০:০০ থেকে বিকাল ০৪:০০ টা পর্যন্ত -->
-            <br>
-            <button class="money-btn"  type="button" disabled v-if="con">Wait....</button>
-            <button class="money-btn" type="submit" @click="nextFun(2)" v-else>Confirm Withdraw</button>
-
-        </div>
-
-
-
-
-
+        </section>
     </div>
 </template>
 <script>
@@ -135,10 +154,6 @@ export default {
                         this.charge = charge;
                         this.Payable = this.form.amount - charge;
                         this.balance = this.user.user.balance - this.form.amount;
-
-
-                        this.onSubmit();
-
                     }
 
 
@@ -188,7 +203,7 @@ export default {
 
 
 
-        if(User.dateformat()[9]<=15){
+        if(User.dateformat()[9]<=16){
             if(User.dateformat()[9]>=10){
 
                 setTimeout(() => {
@@ -198,21 +213,17 @@ export default {
                     }
                 }, 5000);
             }else{
-            alert('প্রত্যাহার সময় সকাল ১০:০০ থেকে বিকাল ০৪:০০ টা পর্যন্ত')
+            alert('প্রত্যাহার সময় সকাল ১০টা থেকে বিকাল ৫টা পযর্ন্ত')
 
-                this.$router.push({ name: 'Useraccount' });
+                this.$router.push({ name: 'Authuser' });
 
 
             }
         }else{
-            alert('প্রত্যাহার সময় সকাল ১০:০০ থেকে বিকাল ০৪:০০ টা পর্যন্ত')
-            this.$router.push({ name: 'Useraccount' });
+            alert('প্রত্যাহার সময় সকাল ১০টা থেকে বিকাল ৫টা পযর্ন্ত')
+            this.$router.push({ name: 'Authuser' });
 
         }
-
-
-
-
 
 
 
@@ -226,21 +237,4 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-
-.bank_details_list select {
-    border: 0;
-    background: transparent;
-    color: white;
-}
-.bank_details_list {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 23px;
-    font-size: 19px;
-    background: #7f0fad;
-    padding: 7px 11px;
-    color: white;
-}
-
 </style>

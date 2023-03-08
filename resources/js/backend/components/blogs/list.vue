@@ -105,13 +105,11 @@ export default {
 
        async sonodname(){
             this.preLooding = true
-            var res = await this.callApi('get',`/api/get/blog/list`,[])
-      
+        var res = await this.callApi('get',`/api/get/blog/list`,[]);
 
-                  this.items = res.data
+                this.items = res.data
                   this.TotalRows = `${this.items.length}`;
                   this.preLooding = false
-
 
         },
 

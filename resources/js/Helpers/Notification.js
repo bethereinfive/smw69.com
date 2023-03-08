@@ -96,27 +96,27 @@ class Notification{
         this.successSound()
 	}
 	customSuccess(mess){
-		// new Noty({
-		// 	type: 'success',
-		// 	layout: 'topRight',
-		// 	text: mess,
-		// 	timeout: 2000,
-		// }).show();
-        // this.successSound()
+		new Noty({
+			type: 'success',
+			layout: 'topRight',
+			text: mess,
+			timeout: 2000,
+		}).show();
+        this.successSound()
 	}
 
     customError(mess){
-		// new Noty({
-		// 	type: 'error',
-		// 	layout: 'topRight',
-		// 	text: mess,
-		// 	timeout: 2000,
+		new Noty({
+			type: 'error',
+			layout: 'topRight',
+			text: mess,
+			timeout: 2000,
 
 
 
 
-		// }).show();
-        // this.errorSound()
+		}).show();
+        this.errorSound()
 	}
 
 	cart_delete(){

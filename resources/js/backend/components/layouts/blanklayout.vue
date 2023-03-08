@@ -2,98 +2,73 @@
     <div>
         <h1 v-if="Frontloader">loading....</h1>
 
-<!--
-        <nav data-v-161cf975="" class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="padding: 0px 0.5rem;">
-                            <a data-v-161cf975="" href="#" class="navbar-brand"></a>
-                            <ul data-v-161cf975="" class="navbar-nav">
-                                <li data-v-161cf975="" class="nav-item">
-                                    <a data-v-161cf975="" href="javascript:void(0)" class="nav-link"><span data-v-161cf975="" class="badge badge-pill badge-secondary" style="background: #0077C3; font-size: 15px;" @click="showbalance"><span v-if="balanceshow">{{ user.user.balance }} tk</span><span v-else>Check Balance</span></span></a>
-                                </li>
-                            </ul>
-                        </nav> -->
- <main class="container" style="padding-top: 25px; margin-bottom: 150px;">
+    <!-- <section id="call">
+      <img :src="$asseturl+'frontend/img/phone.png'" alt="phone" />
+    </section> -->
 
         <slot></slot>
 
-    </main>
-        <div data-v-3c5f5539="" data-v-161cf975="" class="rg-btn-container-foreground" style="--border-color: #212529; --icon-color: #212529; --background-color: #ffffff; --title-color: #212529; --badge-color: #212529;">
-                            <div data-v-3c5f5539="" class="rg-btn-container">
-                                <router-link :to="{name:'Authuser'}" data-v-3c5f5539="" class="rg-btn-item">
-                                    <div data-v-3c5f5539="" class="rg-btn-border"></div>
-                                    <div data-v-3c5f5539="" class="rg-btn-icon rg-btn-icon-active">
-                                        <i class="fas fa-tachometer-alt"></i>
-                                        <!---->
-                                    </div>
-                                    <div data-v-3c5f5539="" class="rg-btn-title rg-btn-title-active">
-                                        Menu
-                                    </div>
-                                </router-link>
-                            </div>
-                            <div data-v-3c5f5539="" class="rg-btn-container">
-                                <a :href="$asseturl+'app.apk'" data-v-3c5f5539="" class="rg-btn-item">
-                                    <div data-v-3c5f5539="" class=""></div>
-                                    <div data-v-3c5f5539="" class="rg-btn-icon">
-                                        <i class="fas fa-mobile-alt"></i>
-                                        <!---->
-                                    </div>
-                                    <div data-v-3c5f5539="" class="rg-btn-title">
-                                        App
-                                    </div>
-                                </a>
-                            </div>
-                            <div data-v-3c5f5539="" class="rg-btn-container">
-                                <router-link :to="{name:'Usertask'}" data-v-3c5f5539="" class="rg-btn-item">
-                                    <div data-v-3c5f5539="" class=""></div>
-                                    <div data-v-3c5f5539="" class="rg-btn-icon">
-                                        <i class="far fa-hand-pointer"></i>
-                                        <!---->
-                                    </div>
-                                    <div data-v-3c5f5539="" class="rg-btn-title">
-                                        Order
-                                    </div>
-                                </router-link>
-                            </div>
-                            <div data-v-3c5f5539="" class="rg-btn-container">
-                                <router-link :to="{name:'support'}" data-v-3c5f5539="" class="rg-btn-item">
-                                    <div data-v-3c5f5539="" class=""></div>
-                                    <div data-v-3c5f5539="" class="rg-btn-icon">
-                                        <i class="fas fa-hands-helping"></i>
-                                        <!---->
-                                    </div>
-                                    <div data-v-3c5f5539="" class="rg-btn-title">
-                                        Help
-                                    </div>
-                                </router-link>
-                            </div>
-                            <div data-v-3c5f5539="" class="rg-btn-container">
-                                <router-link :to="{name:'Useraccount'}" data-v-3c5f5539="" class="rg-btn-item">
-                                    <div data-v-3c5f5539="" class="rg-btn-border-deselect"></div>
-                                    <div data-v-3c5f5539="" class="rg-btn-icon rg-btn-icon-deselect">
-                                        <i class="fas fa-tasks"></i>
-                                        <!---->
-                                    </div>
-                                    <div data-v-3c5f5539="" class="rg-btn-title">
-                                        User
-                                    </div>
-                                </router-link>
-                            </div>
+<section style="padding: 40px;"></section>
+        <section id="menus">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3 p-0" style="width: 20% !important;">
+                        <div class="menu">
+                            <router-link :to="{name:'Authuser'}">
+                                <i class="fa-solid fa-house"></i>
+                                <p>Home</p>
+                            </router-link>
                         </div>
+                    </div>
+                    <div class="col-3 p-0" style="width: 20% !important;">
+                        <div class="menu">
+                            <router-link :to="{name:'UserTeam'}">
+                                <i class="fa-solid fa-people-group"></i>
+                                <p>Team</p>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="col-3 p-0" style="width: 20% !important;">
+                        <div class="menu" style="position: relative;">
+                            <router-link :to="{name:'Usertask'}" style="position: absolute;bottom: -37px;left: 13%;background: white;padding: 6px;border-top-left-radius: 30px;border-top-right-radius: 30px;">
+                                <img style="width: 46px;height: 42px;" :src="$asseturl+'frontend/img/Task.png?ver=1.0'" alt="Home">
+                                <p>Earn</p>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="col-3 p-0" style="width: 20% !important;">
+                        <div class="menu">
+                            <a :href="$asseturl+'VNSHOPIE_Earn_Money.apk'">
+                                <i class="fa-solid fa-mobile"></i>
+                                <p>App</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-3 p-0" style="width: 20% !important;">
+                        <div class="menu">
+                            <router-link :to="{name:'Useraccount'}">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Account</p>
+                            </router-link>
+                        </div>
+                    </div>
 
 
+                </div>
+            </div>
+        </section>
 
     </div>
 </template>
 <script>
   export default {
-
     created() {
                 this.createlink('frontend/css/bootstrap.min.css');
-        this.createlink('frontend/style.css');
+        this.createlink('frontend/css/style.css');
         this.createlink('frontend/css/font-awesome.min.css');
 
         this.createscript('frontend/js/bootstrap.bundle.min.js');
         this.createscript('frontend/js/bootstrap.min.js');
-        this.checkbalance();
     },
     data(){
         return {
@@ -103,7 +78,6 @@
         '$route': {
             handler(newValue, oldValue) {
                 window.scrollTo(0,0);
-                this.balanceshow = false
             },
             deep: true
         }
@@ -113,10 +87,6 @@
 
     },
     methods: {
-
-
-
-
         createlink(url=''){
             let recaptchaScript = document.createElement('link')
             recaptchaScript.setAttribute('href', this.$asseturl+url)
@@ -133,31 +103,11 @@
 </script>
 <style>
 .col-6.amount_item span {
-  border: 2px solid  #e831b8;
+  border: 2px solid #e8ba31;
   display: block;
   text-align: center;
   margin: 6px 0px;
   padding: 4px 3px;
   cursor: pointer;
-}
-input.money-btn {
-    border: 1px solid red;
-    color: red !important;
-}
-button.money-btn {
-    padding: 1px 20px;
-    margin: 11px 0px;
-    font-size: 23px;
-    background: #168080;
-    color: white;
-    width: 100%;
-    border-radius: 21px;
-}
-section.intro.profileBg.mb-5,.layout-content {
-    width: 90%;
-    margin: 42px auto;
-}
-section.intro.profileBg.mb-5 {
-    padding: 35px 0px;
 }
 </style>

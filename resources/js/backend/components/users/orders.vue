@@ -1,14 +1,16 @@
 <template>
     <div>
-
-        <div class="layout-content" style="margin-bottom: 100px;">
-
-
-
-            <section id="listmenus" style="margin-top: 60px;">
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>{{ $t('Order_Record.value') }}</p>
+                <LanguageComponent />
+            </div>
+        </section>
+        <section id="listmenus">
             <div role="feed" class="van-list row" aria-busy="true">
-                <div class="col-md-12" v-for="task in row.task" :key="'task'+task.id">
-                    <div class="card" :style="{backgroundColor:'#0077C3'}" style="margin:10px;margin-bottom: 20px">
+                <div class="col-md-6" v-for="task in row.task" :key="'task'+task.id">
+                    <div class="card" :style="{backgroundColor:'#0c407a'}" style="margin-bottom: 20px">
                         <div class="card-body">
                             <p class="text-white">Date： {{ dateformatglobal(task.created_at)[6] }}</p>
                             <p class="text-white">Task Comisition： {{ task.task_comisition }} TK</p>
@@ -17,11 +19,6 @@
                 </div>
             </div>
         </section>
-
-
-            </div>
-
-
     </div>
 </template>
 <script>

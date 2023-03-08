@@ -164,15 +164,17 @@ var balaceVerify = '';
             balaceAmount = 'rocket_balance';
             balaceVerify = 'rocket_balance_verify';
         }
-        //     var bkash_balance = await this.callApi('get',`/api/getPayment/data?balaceAmount=${balaceAmount}`,[]);
-        //     this.AccountBalance = bkash_balance.data[0].value
-        //     var bkash_balance_verify = await this.callApi('get',`/api/getPayment/data?balaceAmount=${balaceVerify}`,[]);
 
-        // if(bkash_balance_verify.data[0].value=='1'){
-        //     this.balanceverify = 'active'
-        // }else{
-        //     this.balanceverify = 'deactive'
-        // }
+            // var bkash_balance = await this.callApi('get',`/api/getPayment/data?balaceAmount=${balaceAmount}`,[]);
+            // this.AccountBalance = bkash_balance.data[0].value
+            // var bkash_balance_verify = await this.callApi('get',`/api/getPayment/data?balaceAmount=${balaceVerify}`,[]);
+
+            // if(bkash_balance_verify.data[0].value=='1'){
+            //     this.balanceverify = 'active'
+            // }else{
+            //     this.balanceverify = 'deactive'
+            // }
+
 
         this.proloader = false
 

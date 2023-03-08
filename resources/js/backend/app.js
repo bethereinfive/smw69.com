@@ -60,7 +60,6 @@ Vue.use(VueYoutube)
 
 import Multiselect from 'vue-multiselect'
 Vue.component('multiselect', Multiselect)
-
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)

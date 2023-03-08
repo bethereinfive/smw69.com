@@ -4,9 +4,9 @@
 
   <section id="topbar">
         <div class="title">
-            <!-- <a href="javascript:void(0)" @click="$router.go(-1)" ><i class="fa fa-angle-left"></i></a>
+            <a href="javascript:void(0)" @click="$router.go(-1)" ><i class="fa fa-angle-left"></i></a>
             <p>{{ $t('Company_Profile.value') }}</p>
-            <LanguageComponent/> -->
+            <LanguageComponent/>
         </div>
     </section>
 
@@ -14,27 +14,33 @@
         <div class="container-fluid">
             <p>
 
-                We are working on projects to help promote platform e-commerce and increase e-commerce sales and exposure. When we complete the order task issued by Platform E-Commerce, Platform E-Commerce will pay us a commission, which is our source of income.
+                Totally Foregin Site
+Welcome to VNSHOPIE Earn Money
 
-Now let's introduce the e-commerce ordering task rules. Actions taken on orders placed by e-merchants are determined based on our credit in the SBC167 account.
+100 Rupees bonus on account.
+You can work for free by watching videos.
 
-Many new members see it as an investment platform. But I tell you, this is not an investment platform! As the principal deposited in your SBC167 account can be withdrawn at any time.
+Minimum deposit is Rs.300
+Minimum withdrawal is Rs.200
+You will receive the payment within 24 hours.
+Bkash, Nagad or rocket.
 
-you can withdraw the principal amount to your bank account at any time. Deposits will only increase your daily search earnings so it is not an investment.
+Working hours:
+10 AM TO 12 PM.
 
-You can withdraw our funds at any time keeping them safe. Therefore, SBC167 company is safe, reliable and trustworthy
-Expires on 30 March 2025.
+Withdrawal Time:
+10 AM TO 5PM
+Withdrawal time: 1-24 hours.
 
-Working hours: are from 10 AM to 12 PM
-Withdraw time: is 10 am to 4 pm
+Withdrawal Charge: 5%
 
-You can make the deposit at any time and it will be automatically added.
-Withdrawal time
-Will reach your wallet within 10 hours.<br/>
+We deal directly with YouTube and earn profit from them, so you can earn more by investing here.
 
+You can withdraw your investment money at the end of the term.
 
-
-<img :src="$asseturl+'header.jpeg'" width="100%" alt="">
+You can work with us for 2 years.
+thank you.
+Expiration date is 10 February 2025<br/><br/>
 
 
 

@@ -1,192 +1,89 @@
 <template>
     <div>
-
-        <div class="container" style="    width: 90%;">
-            <!-- <div class="van-nav-bar van-nav-bar--fixed mb-5">
-                <div class="van-nav-bar__content"><div class="van-nav-bar__title van-ellipsis">ডিপোজিট</div></div>
-            </div> -->
-
-
-
-            <div v-if="step == 1" style="    margin-top: 70px;margin-bottom: 100px;">
-
-                <div data-v-cd1085ee="" class="field-box-input van-cell van-field  mt-3">
-                    <label class="inputlabel" for="">
-                        <span>ডিপোজিটের মাধ্যম </span>
-                    </label>
-                    <select class="form-control" v-model="payMethods" @change="getMethods" required>
-                        <option value="">Select</option>
-                        <option v-for="pay in row" :key="'pay' + pay.id" :value="pay.id">{{ pay.name }}
-                        </option>
-                    </select>
-                </div>
-
-
-
-                <div data-v-cd1085ee="" class="field-box-input van-cell van-field mt-3">
-                    <label class="inputlabel" for="">
-                        <span>ডিপোজিটের পরিমাণ </span>
-                    </label>
-                    <input type="text" v-model="amount" class="form-control"
-                        placeholder="অনুগ্রহ করে ডিপোজিটের পরিমাণ পূরণ করুন">
-                </div>
-                <div class="form-group">
-                    <label for="">Sender Number</label>
-                    <input type="tel" class="form-control" v-model="form.sender" required>
-                </div>
-
-
-
-
-
-                <!--
-                <div class="row">
-                    <div class="col-6 amount_item" @click="amount = 500 / rates"><span>{{
-                    500/rates }}</span> </div>
-                    <div class="col-6 amount_item" @click="amount = 1000 / rates"><span>{{
-                    1000/rates }}</span></div>
-                    <div class="col-6 amount_item" @click="amount = 2000 / rates"><span>{{
-                    2000/rates }}</span></div>
-                    <div class="col-6 amount_item" @click="amount = 5000 / rates"><span>{{
-                    5000/rates }}</span></div>
-                    <div class="col-6 amount_item" @click="amount = 10000 / rates"><span>{{
-                    10000/rates }}</span></div>
-                    <div class="col-6 amount_item" @click="amount = 20000 / rates"><span>{{
-                    20000/rates }}</span></div>
-                    <div class="col-6 amount_item" @click="amount = 25000 / rates"><span>{{
-                    25000/rates }}</span></div>
-                </div> -->
-                <button class="money-btn" @click="nextFun(2)">Next</button>
-
-
-                <!-- <p style="color: red;text-align: center;font-size: 17px;">{{ settings.recharagetext }}</p> -->
-
-                <div class="instruct" data-v-7494dfc8=""><span class="title" data-v-7494dfc8="">Deposit
-                        explanation</span><span data-v-7494dfc8=""
-                        style="color: var(--van-button-danger-background-color);">1、 Please select machine category and
-                        choose payment method. After deposit, if the deposit has not arrived within 10 mins, please
-                        contact the online customer service.</span><span data-v-7494dfc8="">2、 After deposit, mining
-                        machine will be upgraded, more commission will be earned when finishing mining.</span><span
-                        data-v-7494dfc8="">3、 When doing deposit, do not leave the paying page until you finish the
-                        transfer and input tnxID</span><span data-v-7494dfc8="">4、 Holidays are open for deposit as
-                        well</span><span data-v-7494dfc8="">5、 Submit correct information when deposit. Please do not
-                        submit the same tnxID multiple times.</span></div>
-
-
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>Recharge</p>
             </div>
-
-            <form @submit.stop.prevent="onSubmit" v-else-if="step == 2" style="margin-bottom: 100px;">
-
-
-                <div class="content" data-v-125b5982="">
-                    <div class="title" data-v-125b5982="">
-                        <div class="van-image" data-v-125b5982="">
-
-                            <img :src="$asseturl+'Recharge/bkash.png'" class="van-image__img" v-if="form.method=='Bkash'" style="object-fit: fill;">
-                            <img :src="$asseturl+'Recharge/nagad.png'" class="van-image__img" v-if="form.method=='Nagad'" style="object-fit: fill;">
-                            <img :src="$asseturl+'Recharge/rocket.png'" class="van-image__img" v-if="form.method=='Rocket'" style="object-fit: fill;">
-                            <img src="" class="van-image__img" v-else style="object-fit: fill;">
-
+        </section>
+        <section id="reclist">
+            <div class="details">
+                <div class="container-fluid">
+                    <div v-if="step == 1">
+                        <div class="form-group">
+                            <label for="">Recharge Method</label>
+                            <select class="form-control" v-model="payMethods" @change="getMethods" required>
+                                <option value="">Select</option>
+                                <option v-for="pay in row" :key="'pay' + pay.id" :value="pay.id">{{ pay.name }}
+                                </option>
+                            </select>
                         </div>
+                        <div class="form-group">
+                            <label for="">Recharge Amount</label>
+                            <input type="tel" class="form-control" v-model="amount">
+                        </div>
+                        <div class="row" v-if="payMethods && form.method=='USDT'">
+                            <div class="col-6 amount_item" @click="amount = 10"><span>{{ 10 }} USD</span> </div>
+                            <div class="col-6 amount_item" @click="amount = 20"><span>{{ 20 }} USD</span></div>
+                            <div class="col-6 amount_item" @click="amount = 50"><span>{{ 50 }} USD</span></div>
+                            <div class="col-6 amount_item" @click="amount = 100"><span>{{ 100 }} USD</span></div>
+                            <div class="col-6 amount_item" @click="amount = 200"><span>{{ 200 }} USD</span></div>
+                            <div class="col-6 amount_item" @click="amount = 500"><span>{{ 500 }} USD</span></div>
+                        </div>
+                        <div class="row" v-else-if="payMethods">
+                            <div class="col-6 amount_item" @click="amount = 700"><span>{{ 700/rates }}</span> </div>
+                            <div class="col-6 amount_item" @click="amount = 1000"><span>{{ 1000/rates }}</span></div>
+                            <div class="col-6 amount_item" @click="amount = 2000"><span>{{ 2000/rates }}</span></div>
+                            <div class="col-6 amount_item" @click="amount = 5000"><span>{{ 5000/rates }}</span></div>
+                            <div class="col-6 amount_item" @click="amount = 10000"><span>{{ 10000/rates }}</span></div>
+                            <div class="col-6 amount_item" @click="amount = 20000"><span>{{ 20000/rates }}</span></div>
+                            <div class="col-6 amount_item" @click="amount = 25000"><span>{{ 25000/rates }}</span></div>
+                        </div>
+                        <button class="btn btn-info" @click="nextFun(2)">Next</button>
+                        <p style="color: red;text-align: center;font-size: 17px;">{{ settings.recharagetext }}</p>
                     </div>
-                    <div class="step" data-v-125b5982="">Step 1: Copy {{ form.method }} Information</div>
-                    <div class="van-cell-group van-hairline--top-bottom" data-v-125b5982="">
-                        <div class="van-cell" data-v-125b5982=""><!---->
-                            <div class="van-cell__title"><span>{{ form.method }} account</span><!----></div>
-                            <div class="van-cell__value"><span>{{ copyMessage }}</span>
-                                <!-- <i @click="copyref" style="font-size: 20px;padding: 5px;" class="far fa-copy"></i> -->
-                            </div>
+                    <form @submit.stop.prevent="onSubmit" v-else-if="step == 2">
+                        <h4 class="d-block bg-success text-white p-1 my-3">Payment Info</h4>
+                        <p style="color: red;font-size: 17px;">বিঃদ্রঃ অবশই সেন্ড মানি করবেন এবং রেফারেন্স এ আপনার Username দিবেন ।</p>
+                        <div class="patment_info">
+                            <ul class="list-unstyled">
+                                <li class="li"><span>{{ form.method }} Account</span><span>
+                                        <input type="hidden" v-model="copyMessage">
+                                        <!-- <input type="button" value="copy" class="copy" @click="copyref"> -->
+                                        {{ copyMessage }} <i @click="copyref" class="far fa-copy"></i>
+                                        <br>
+                                        <img style="width:200px; height: 200px !important;"
+                                            v-if="form.method=='USDT (TRC-20)'"
+                                            :src="$asseturl+'frontend/img/qrcode.jpeg'" alt="">
+                                    </span></li>
+                                <li class="li" v-if="form.method=='USDT'"><span>Amount</span><span>{{ amount }} USD = {{
+                                amount*rates }} BDT</span></li>
+                                <li class="li" v-else><span>Amount</span><span>{{ amount*rates }} BDT</span></li>
+                            </ul>
                         </div>
-                        <div class="van-cell amount" data-v-125b5982=""><!---->
-                            <div class="van-cell__title"><span>Amount</span><!----></div>
-                            <div class="van-cell__value"><span>{{ amount*rates }}৳</span></div><!----><!---->
+                        <h4 class="d-block bg-success text-white p-1 my-3">Recharge Info</h4>
+                        <div class="form-group" v-if="form.method=='USDT'">
+                            <label for="">Screenshot</label>
+                            <input class="form-control form-control-lg" id="formFileLg"
+                                @change="FileSelected($event, 'screenshot')" type="file">
+                            <img class="img-thumbnail" :src="form.screenshot" alt="">
                         </div>
-                    </div>
-                    <div class="step" data-v-125b5982="">Step 2: Transfer the amount you want to deposit to us by {{ form.method }}
-                        transfer</div>
-                    <div class="van-cell-group van-hairline--top-bottom" data-v-125b5982="">
-                        <div class="van-cell step2" data-v-125b5982=""><!---->
-                            <div class="van-cell__title"><span>* Please copy your [Transaction ID] after
-                                    payment</span><!----></div><!----><!----><!---->
+                        <div class="form-group">
+                            <label for="">Sender Number</label>
+                            <input type="tel" class="form-control" v-model="form.sender" required>
                         </div>
-                    </div>
-                    <div class="step" data-v-125b5982="">Step 3: Please input account number and Transaction ID to
-                        complete the deposit</div>
-
-
-
-
-
-                    <div class="van-row pic" style="    justify-content: center;    height: 393px;" data-v-125b5982="" v-if="form.method=='Bkash'">
-                        <div class="van-col van-col--12 right" data-v-125b5982="">
-                            <div class="van-image" data-v-125b5982="" style="height: 200px;"><img style="width: 170px;"
-                                :src="$asseturl+'Recharge/bkash_tnxid_1.png'" class="van-image__img"></div>
+                        <div class="form-group mb-3">
+                            <label for="">Transition Id</label>
+                            <input type="text" class="form-control" v-model="form.trx" required>
                         </div>
-                        <div class="van-col van-col--12" data-v-125b5982="">
-                            <div class="van-image" data-v-125b5982="" style="height: 100px;"><img style="width: 170px;"
-                                :src="$asseturl+'Recharge/bkash_tnxid_2.png'" class="van-image__img"></div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="van-row pic" style="    justify-content: center;" data-v-125b5982="" v-if="form.method=='Nagad'">
-                        <div class="van-col van-col--12 right" data-v-125b5982="">
-                            <div class="van-image" data-v-125b5982="" style="height: 200px;"><img style="width: 170px;"
-                                :src="$asseturl+'Recharge/nagad_tnxid_1.jpg'" class="van-image__img"></div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="van-row pic" style="    justify-content: center;" data-v-125b5982="" v-if="form.method=='Rocket'">
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="form-group d-none">
-                    <label for="">Screenshot</label>
-                    <input class="form-control form-control-lg" id="formFileLg"
-                        @change="FileSelected($event, 'screenshot')" type="file">
-                    <img class="img-thumbnail" :src="form.screenshot" alt="">
+                        <button class="btn btn-secondary" @click="nextFun(1)">Previous</button>
+                        <button class="btn btn-info" type="button" disabled v-if="con">Wait...</button>
+                        <button class="btn btn-info" type="submit" v-else>Submit</button>
+                    </form>
+                    <!-- <router-link v-for="pay in row" :to="{name:'RechargePage',params:{method:pay.id}}" :key="'pay'+pay.id"><img :src="pay.image"></router-link> -->
                 </div>
-
-
-                        <input type="text" id="van-field-5-input"  v-model="form.trx" name="tnxId" class="form-control" placeholder="10-digit Transaction ID" required>
-
-                        <div data-v-125b5982="" style="margin: 16px;">
-
-                            <button type="button" class="money-btn" v-if="con">Please Wait....</button>
-                            <button type="Submit" class="money-btn" v-else>Confirm</button>
-
-                        </div>
-
-                </div>
-
-
-
-
-
-
-
-            </form>
-
-        </div>
-
-
-
-
-
+            </div>
+        </section>
         <div class="copyPopup" v-if="popup">
             <span> Number copied success</span>
         </div>
@@ -298,74 +195,4 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-.instruct {
-    border-radius: 10px;
-    border: 2px solid var(--van-gray-4);
-    padding: 10px;
-}
-
-.instruct .title {
-    color: var(--van-gray-6);
-    margin-bottom: 15px;
-}
-
-.instruct span {
-    display: block;
-    font-size: small;
-    font-weight: 700;
-}
-
-
-
-.content {
-    padding: 50px 10px 10px 10px;
-}
-
-.title[data-v-125b5982] {
-    text-align: center;
-}
-.step[data-v-125b5982] {
-    padding: 10px;
-    background-color: #168080;
-    font-weight: bolder;
-    color: var(--van-button-default-background-color);
-    word-wrap: break-word;
-    overflow: hidden;
-}
-
-.van-cell-group[data-v-125b5982] {
-    margin-bottom: 16px;
-}
-.van-cell-group {
-    background: var(--van-cell-group-background-color);
-}
-.van-hairline, .van-hairline--bottom, .van-hairline--left, .van-hairline--right, .van-hairline--surround, .van-hairline--top, .van-hairline--top-bottom {
-    position: relative;
-}
-.pic[data-v-125b5982] {
-    padding: 10px 0;
-}
-.van-row {
-    display: flex;
-    flex-wrap: wrap;
-}
-.van-cell {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    width: 100%;
-    padding: var(--van-cell-vertical-padding) var(--van-cell-horizontal-padding);
-    overflow: hidden;
-    color: var(--van-cell-text-color);
-    font-size: var(--van-cell-font-size);
-    line-height: var(--van-cell-line-height);
-    background: var(--van-cell-background-color);
-}
-
-
-
-
-
 </style>

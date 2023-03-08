@@ -56,7 +56,7 @@ let role = require('./components/assignRole.vue').default;
 let Authuser = require('./components/users/index.vue').default;
 let Useraccount = require('./components/users/account.vue').default;
 let UserTeam = require('./components/users/team.vue').default;
-let Usertask = require('./components/users/task.vue').default;
+let Usertask = require('./components/users/task2.vue').default;
 let UsertaskComplete = require('./components/users/taskcomplete.vue').default;
 //////////////////
 let companyPro = require('./components/users/companyPro.vue').default;
@@ -66,18 +66,15 @@ let teamMember = require('./components/users/teamMember.vue').default;
 let teamIntro = require('./components/users/teamIntro.vue').default;
 
 
-let Recharge = require('./components/users/recharge/RechargeAmount.vue').default;
-let rechargepage = require('./components/users/recharge/RechargePage.vue').default;
-let rechargecheckout = require('./components/users/recharge/rechargecheckout.vue').default;
-let rechargesuccess = require('./components/users/recharge/rechargesuccess.vue').default;
-let rechargeFailed = require('./components/users/recharge/rechargeFailed.vue').default;
+let Recharge = require('./components/users/RechargeAmount.vue').default;
+let rechargepage = require('./components/users/RechargePage.vue').default;
+let rechargecheckout = require('./components/users/rechargecheckout.vue').default;
+let rechargesuccess = require('./components/users/rechargesuccess.vue').default;
+let rechargeFailed = require('./components/users/rechargeFailed.vue').default;
 
 
 
 
-
-
-// let Recharge = require('./components/users/Recharge2.vue').default;
 let RechargePage = require('./components/users/RechargePage.vue').default;
 let Withdraw = require('./components/users/Withdraw.vue').default;
 let invite = require('./components/users/invite.vue').default;
@@ -92,7 +89,6 @@ let RechangePass = require('./components/users/RechangePass.vue').default;
 let help = require('./components/users/help.vue').default;
 let promotion = require('./components/users/promotion.vue').default;
 let memberSystem = require('./components/users/memberSystem.vue').default;
-let support = require('./components/users/support.vue').default;
 let accountDetails = require('./components/users/accountDetails.vue').default;
 
 
@@ -101,10 +97,6 @@ let instraction = require('./components/users/instraction.vue').default;
 let rechargeHelp = require('./components/users/rechargeHelp.vue').default;
 let withdrawalHelp = require('./components/users/withdrawalHelp.vue').default;
 let brokerHelp = require('./components/users/brokerHelp.vue').default;
-
-
-
-let TikTok = require('./components/users/tiktok/t.vue').default;
 
 
 
@@ -125,7 +117,6 @@ export const routes = [
 
 
   { path:  `${prefix}/`, component: home, name:'Dashboard',meta: { layout: adminlayout } },
-
   { path:  `${prefix}/Settings`, component: Settings, name:'Settings',meta: { layout: adminlayout } },
   { path:  `${prefix}/plans`, component: plans, name:'MembersPlans',meta: { layout: adminlayout } },
   { path:  `${prefix}/plans/add`, component: plansView, name:'plansAdd',meta: { layout: adminlayout } },
@@ -175,9 +166,6 @@ export const routes = [
 
 // users
 //menu
-{ path:  `${prefixuser}/TikTok`, component: TikTok, name:'TikTok',meta: { layout: blanklayout } },
-
-
   { path:  `${prefixuser}`, component: Authuser, name:'Authuser',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/account`, component: Useraccount, name:'Useraccount',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/team`, component: UserTeam, name:'UserTeam',meta: { layout: blanklayout } },
@@ -205,9 +193,6 @@ export const routes = [
 
 
 
-
-
-  { path:  `${prefixuser}/Recharge`, component: Recharge, name:'Recharge',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/Recharge/:method`, component: RechargePage, name:'RechargePage',meta: { layout: blanklayout } },
 
   { path:  `${prefixuser}/Withdraw`, component: Withdraw, name:'Withdraw',meta: { layout: blanklayout } },
@@ -223,7 +208,6 @@ export const routes = [
   { path:  `${prefixuser}/help`, component: help, name:'help',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/promotion`, component: promotion, name:'promotion',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/memberSystem`, component: memberSystem, name:'memberSystem',meta: { layout: blanklayout } },
-  { path:  `${prefixuser}/support`, component: support, name:'support',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/accountDetails`, component: accountDetails, name:'accountDetails',meta: { layout: blanklayout } },
 
   { path:  `${prefixuser}/USDT`, component: USDT, name:'USDT',meta: { layout: blanklayout } },

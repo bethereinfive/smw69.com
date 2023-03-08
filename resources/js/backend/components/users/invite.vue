@@ -3,17 +3,17 @@
 
 
 
-        <section id="bigbg" style="background: #3838a3 !important;height: 100vh;margin-top: 41px;" class="qr">
+        <section id="bigbg" style="background: #3838a3 !important;" class="qr">
             <div class="container-fluid">
                 <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
                 <div class="QR  text-center">
                     <!-- <img src="img/QR.png"> -->
                     <img :src="'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl='+ref+'&choe=UTF-8'" :alt='ref'/>
                 </div>
-                <form action="" class="link" style="width: 70%;margin: 10px auto;">
+                <form action="" class="link">
                     <div class="row">
-                        <input class="col-12" style="color: white;padding: 10px 8px;" disabled type="url" v-model="ref">
-                        <!-- <input class="copy col-2" style="color: black;padding: 10px 8px;" type="button" value="copy" @click="copyref"> -->
+                        <input disabled type="url" v-model="ref" style="width: 100% !important;">
+                        <!-- <input type="button" value="copy" class="copy" @click="copyref"> -->
                     </div>
                 </form>
 
@@ -48,7 +48,7 @@ export default {
           async getData() {
              var id = localStorage.getItem('userid');
             var res = await this.callApi('get', `/api/admin/user/${id}`, []);
-                this.ref = window.location.origin+'/register?ref='+res.data.user.username
+                this.ref = 'https://vnshopie.com/register?ref='+res.data.user.username
             this.row = res.data;
 
         },

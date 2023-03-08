@@ -3,14 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Welcome to SMW</title>
+    <title>VNSHOPIE Earn Money</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/img/20221107_174650.png') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('dashboard_asset/css/all.min.css') }}"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/img/logos.png') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     {{-- <!-- Favicon -->
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/normalize.css') }}">
@@ -29,17 +27,7 @@
 
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
-        *{
-            --van-cell-group-background-color:white;
-             --van-button-default-background-color:white;
-        }
-
-.video-cntainer {
-
-}
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/app.css?ver=1.0.0') }}">
 <style>
 
 
@@ -61,9 +49,15 @@
 
 
 
-<script src="{{ asset('js/backend.js?ver=1.0.0') }}"></script>
+<script src="{{ asset('js/backend.js?ver=1.0.11') }}"></script>
 
-
+<script>
+    document.addEventListener('touchstart', function (event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, false);
+</script>
 
 {{--
 <!-- Popper js -->

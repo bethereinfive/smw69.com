@@ -33,7 +33,7 @@ a {
 	margin-right: 4px;
 }
 marquee {
-    color: #ee0202;
+    color: #005AAB;
     font-size: 12px;
     line-height: 16px;
   }
@@ -41,8 +41,8 @@ marquee {
 	color: #fff;
 	text-align: center;
 	padding: 3px 6px;
-	background: -webkit-linear-gradient(top,#ffe400,#fed200);
-	background: linear-gradient(180deg,#ffe400,#fed200);
+    background: -webkit-linear-gradient(180deg,#ed1c24,#005aab);
+    background: linear-gradient(180deg,#ed1c24,#005aab);
 	border-radius: 3px;;
 	margin-right: 8px;
 	margin-left: 8px;
@@ -175,7 +175,7 @@ padding-top: 9px;
 
 }
 #topbar {
-    background: #c5380e;
+    background: #ED1C24;
     text-align: center;
     color: #ffffff;
 	font-size: 15px;
@@ -615,7 +615,7 @@ input:focus {
 #btn-area a {
 	text-align: center;
 	padding: 8px 0;
-	background: rgb(191, 15, 15) none repeat scroll 0% 0%;
+	background: #ED1C24 none repeat scroll 0% 0%;
 	font-size: 14px;
 	color: #fff;
 	display: block;

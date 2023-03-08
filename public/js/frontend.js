@@ -2107,11 +2107,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       confirmReg: "",
       emptyFields: false,
       form: {
-        mobile: '',
-        password: ''
+        mobile: "",
+        password: ""
       },
-      country: '+880',
-      mobileCode: '',
+      country: "+880",
+      mobileCode: "",
       errors: {},
       codes: {},
       loadLogin: false
@@ -2128,7 +2128,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.callApi('get', "".concat(_this.$asseturl, "CountryCodes.json"), []);
+                return _this.callApi("get", "".concat(_this.$asseturl, "CountryCodes.json"), []);
 
               case 2:
                 res = _context.sent;
@@ -2169,28 +2169,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.form.mobile == "" || this.form.password == "") {
         this.emptyFields = true;
       } else {
-        axios.post('/login', this.form).then(function (res) {
+        axios.post("/login", this.form).then(function (res) {
           if (res.data == 0) {
-            Notification.customError('Please Enter Valid Phone Number and Password');
+            Notification.customError("Please Enter Valid Phone Number and Password");
             _this3.loadLogin = false;
           } else if (res.data == 422) {
-            Notification.customError('Your Account Has Been Banded!');
+            Notification.customError("Your Account Has Been Banded!");
             _this3.loadLogin = false;
           } else if (res.data == 444) {
-            Notification.customError('You Cant Login Multiple account same device!');
+            Notification.customError("You Cant Login Multiple account same device!");
             _this3.loadLogin = false;
-            localStorage.setItem('dmdevice', 1);
+            localStorage.setItem("dmdevice", 1);
           } else {
-            localStorage.setItem('dmdevice', 1);
+            localStorage.setItem("dmdevice", 1);
             User.responseAfterLogin(res);
 
-            if (res.data.role == 'admin') {
-              window.location.href = '/dashboard/adddmin';
+            if (res.data.role == "admin") {
+              window.location.href = "/dashboard/adddmin";
             } else {
-              window.location.href = '/dashboard/user';
+              window.location.href = "/dashboard/user";
             }
 
-            Notification.customSuccess('Signed in successfully Complete'); // this.$router.push({name: 'home'})
+            Notification.customSuccess("Signed in successfully Complete"); // this.$router.push({name: 'home'})
             // window.location.href = '/dashboard'
           }
         })["catch"](function (error) {
@@ -2201,7 +2201,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     blur: function blur(id) {
       var child = document.getElementById(id);
 
-      if (this.form[id] == '') {
+      if (this.form[id] == "") {
         child.parentNode.classList.remove("blursuccess");
         child.parentNode.classList.add("blurerror");
       } else {
@@ -2245,28 +2245,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.form.ref_by = this.$route.query.ref;
       this.refer = 1;
     } else {
-      this.form.ref_by = "111111";
+      this.form.ref_by = 'dSbeVOj';
       this.refercheck();
     }
 
-    this.form.country = "+880";
+    this.form.country = '+880';
     this.countryList();
     this.addcountry();
+    this.form.username = this.randomLetter(7);
+    this.usernamecheck();
   },
   data: function data() {
     return {
       btndis: true,
-      captcha: "",
-      genaratedCaptcha: "",
+      captcha: '',
+      genaratedCaptcha: '',
       mobileCode: null,
       form: {
         country: null,
-        name: "",
+        name: 'New User',
         username: null,
         mobile: null,
         password: null,
         password_confirmation: null,
-        withdrawpass: "123456",
+        withdrawpass: '123456',
         ref_by: null
       },
       usernameMatch: 1,
@@ -2282,6 +2284,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     // setLang(){
     //     localStorage.setItem('language',this.$i18n.locale)
     // },
+    randomLetter: function randomLetter(length) {
+      var result = '';
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      var counter = 0;
+
+      while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+      }
+
+      return result;
+    },
     usernamecheck: function usernamecheck() {
       var _this = this;
 
@@ -2291,7 +2306,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this.form.username == "")) {
+                if (!(_this.form.username == '')) {
                   _context.next = 4;
                   break;
                 }
@@ -2302,7 +2317,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 _context.next = 6;
-                return _this.callApi("get", "/api/count/username/check?username=".concat(_this.form.username), []);
+                return _this.callApi('get', "/api/count/username/check?username=".concat(_this.form.username), []);
 
               case 6:
                 res = _context.sent;
@@ -2331,7 +2346,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _this2.callApi("get", "".concat(_this2.$asseturl, "CountryCodes.json"), []);
+                return _this2.callApi('get', "".concat(_this2.$asseturl, "CountryCodes.json"), []);
 
               case 2:
                 res = _context2.sent;
@@ -2374,7 +2389,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                if (!(_this4.form.ref_by == "")) {
+                if (!(_this4.form.ref_by == '')) {
                   _context4.next = 4;
                   break;
                 }
@@ -2385,7 +2400,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 _context4.next = 6;
-                return _this4.callApi("get", "/api/count/username/check?username=".concat(_this4.form.ref_by), []);
+                return _this4.callApi('get', "/api/count/username/check?username=".concat(_this4.form.ref_by), []);
 
               case 6:
                 res = _context4.sent;
@@ -2407,48 +2422,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     register: function register() {
       var _this5 = this;
 
-      // if(localStorage.getItem('dmdevice')){
+      this.usernamecheck(); // if(localStorage.getItem('dmdevice')){
       //     Notification.customError(`This device has already have an account!`);
       // }else{
       // if (this.genaratedCaptcha === this.captcha) {
-      // if(this.usernameMatch!=2){
-      // Notification.customError('please Enter deferent username');
-      // }else{
-      if (this.refer != 1) {
-        Notification.customError("Opps,Refer code is Invalid");
+
+      if (this.usernameMatch != 2) {
+        Notification.customError('Something want wrong.Please Try again');
+        this.form.username = this.randomLetter(7);
       } else {
-        if (this.form.password === this.form.password_confirmation) {
-          axios.post("api/auth/register", this.form).then(function (res) {
-            if (res.data == 422) {
-              Notification.customError("This Phone Number Already Exist");
-            } else if (res.data == 444) {
-              Notification.customError("This device has already have an account!");
-              localStorage.setItem("dmdevice", 1);
-            } else {
-              // console.log(res)
-              if (res.status == 201) {
-                Notification.customSuccess("Registration Success");
-                localStorage.setItem("dmdevice", 1);
-
-                _this5.$router.push({
-                  name: "/login"
-                });
-              } else {
-                Notification.customError("Something want wrong. Please Try again or contact with admin");
-              } // User.responseAfterLogin(res)
-
-            } // console.log(res.data)
-            // User.responseAfterLogin(res)
-
-          })["catch"](function (error) {
-            return _this5.errors = error.response.data.errors;
-          });
+        if (this.refer != 1) {
+          Notification.customError('Opps,Refer code is Invalid');
         } else {
-          Notification.customError("Password and Confirm password does not match");
+          if (this.form.password === this.form.password_confirmation) {
+            axios.post('api/auth/register', this.form).then(function (res) {
+              if (res.data == 422) {
+                Notification.customError('This Phone Number Already Exist');
+              } else if (res.data == 444) {
+                Notification.customError("This device has already have an account!");
+                localStorage.setItem('dmdevice', 1);
+              } else {
+                // console.log(res)
+                if (res.status == 201) {
+                  Notification.customSuccess('Registration Success');
+                  localStorage.setItem('dmdevice', 1);
+
+                  _this5.$router.push({
+                    name: '/login'
+                  });
+                } else {
+                  Notification.customError('Something want wrong. Please Try again or contact with admin');
+                } // User.responseAfterLogin(res)
+
+              } // console.log(res.data)
+              // User.responseAfterLogin(res)
+
+            })["catch"](function (error) {
+              return _this5.errors = error.response.data.errors;
+            });
+          } else {
+            Notification.customError('Password and Confirm password does not match');
+          }
         }
-      } // }
-      // } else {
-      //     Notification.customError("Captcha does not match!");
+      } // } else {
+      //     Notification.customError('Captcha does not match!');
       // }
       // }
 
@@ -2495,7 +2512,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['users'],
+  props: ['user'],
   created: function created() {
     if (User.loggedIn()) {
       var localRole = localStorage.getItem('role');
@@ -2713,31 +2730,10 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section", {
-    attrs: {
-      id: "bigbg"
-    }
-  }, [_c("main", {
-    staticClass: "container"
-  }, [_c("div", {
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_c("div", {
-    staticClass: "form-container",
+  return _c("form", {
+    staticClass: "mt-5",
     staticStyle: {
-      "padding-bottom": "15rem",
-      background: "#0077C3 !important"
-    },
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_c("form", {
-    staticStyle: {
-      "padding-top": "6rem"
-    },
-    attrs: {
-      "data-v-c1501c16": ""
+      "padding-bottom": "70px"
     },
     on: {
       submit: function submit($event) {
@@ -2745,45 +2741,32 @@ var render = function render() {
         return _vm.login.apply(null, arguments);
       }
     }
-  }, [_c("span", {
-    staticClass: "login100-form-logo",
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_c("img", {
-    attrs: {
-      "data-v-c1501c16": "",
-      src: _vm.$asseturl + "frontend/img/20221107_174650.png",
-      width: "60px"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "login100-form-title pt-3 pb-3",
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_vm._v(" Log in ")]), _vm._v(" "), _c("div", {
-    attrs: {
-      "data-v-c1501c16": ""
-    }
   }, [_c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-c1501c16": "",
-      "data-validate": "Enter username"
+    staticClass: "mx-3 p-3 rounded-4 text-center",
+    staticStyle: {
+      "background-color": "#DAE0EE"
     }
-  }, [_c("input", {
+  }, [_c("h1", {
+    staticClass: "fs-2 fw-bold mb-3",
+    staticStyle: {
+      color: "#0069BD"
+    }
+  }, [_vm._v("প্রবেশ করুন")]), _vm._v(" "), _c("div", {
+    staticClass: "bg-white border-white mb-3 mx-2 p-2 rounded-3"
+  }, [_c("div", {
+    staticClass: "border-bottom input-group pb-2"
+  }, [_vm._m(0), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.mobile,
       expression: "form.mobile"
     }],
-    staticClass: "input100",
+    staticClass: "border-0 form-control",
     attrs: {
-      "data-v-c1501c16": "",
       type: "text",
-      name: "username",
-      placeholder: "Mobile Number"
+      placeholder: "অনুগ্রহ করে ব্যবহারকারীর মোবাইল নাম্বার প্রদান করুনঃ",
+      "aria-describedby": "basic-addon1"
     },
     domProps: {
       value: _vm.form.mobile
@@ -2796,35 +2779,19 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-c1501c16": "",
-      "data-validate": "Enter password"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-eye",
-    staticStyle: {
-      position: "absolute",
-      right: "20px",
-      top: "13px"
-    },
-    attrs: {
-      "data-v-c1501c16": "",
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" "), _c("input", {
+    staticClass: "input-group pb-2"
+  }, [_vm._m(1), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.password,
       expression: "form.password"
     }],
-    staticClass: "input100",
+    staticClass: "border-0 form-control",
     attrs: {
-      "data-v-c1501c16": "",
       type: "password",
-      name: "pass",
-      placeholder: "Password"
+      placeholder: " পাসওয়ার্ড প্রদান করুনঃ",
+      "aria-describedby": "basic-addon1"
     },
     domProps: {
       value: _vm.form.password
@@ -2837,38 +2804,63 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "container-login100-form-btn pt-5",
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_c("button", {
-    staticClass: "login100-form-btn",
-    attrs: {
-      "data-v-c1501c16": "",
-      type: "submit"
-    }
-  }, [_vm.loadLogin ? _c("span", [_vm._v(_vm._s(_vm.$t("Loader.value")))]) : _c("span", [_vm._v(_vm._s(_vm.$t("Login.value")))])])]), _vm._v(" "), _c("div", {
-    staticClass: "text-center p-t-90",
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_c("p", {
-    staticClass: "text69",
-    attrs: {
-      "data-v-c1501c16": ""
-    }
-  }, [_vm._v("No Account?")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text95",
+    staticClass: "text-end"
+  }, [_c("router-link", {
+    staticClass: "mb-2 mx-2 rounded-2 text-primary",
+    staticStyle: {
+      "border-color": "#0069BD"
+    },
     attrs: {
       to: {
         name: "register"
-      },
-      "data-v-c1501c16": ""
+      }
     }
-  }, [_vm._v("\n                                            Register\n                                        ")])], 1)])])])])]);
+  }, [_vm._v("নিবন্ধন ")])], 1), _vm._v(" "), _c("div", {
+    staticClass: "mx-2"
+  }, [_vm.loadLogin ? _c("button", {
+    staticClass: "btn w-100 text-white rounded-4",
+    staticStyle: {
+      "background-color": "#0069BD"
+    },
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("অপেক্ষা করুন....")]) : _c("button", {
+    staticClass: "btn w-100 text-white rounded-4",
+    staticStyle: {
+      "background-color": "#0069BD"
+    },
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("প্রবেশ করুন")])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", {
+    staticClass: "bg-white border-0 input-group-text",
+    attrs: {
+      id: "basic-addon1"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", {
+    staticClass: "bg-white border-0 input-group-text",
+    attrs: {
+      id: "basic-addon1"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-lock"
+  })]);
+}];
 render._withStripped = true;
 
 
@@ -2890,25 +2882,10 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section", {
-    attrs: {
-      id: "bigbg"
-    }
-  }, [_c("main", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "form-container",
+  return _c("form", {
+    staticClass: "py-5",
     staticStyle: {
-      "min-height": "0px",
-      background: "#0077C3 !important"
-    },
-    attrs: {
-      "data-v-6daec649": ""
-    }
-  }, [_c("form", {
-    staticClass: "pt-5",
-    attrs: {
-      "data-v-6daec649": ""
+      "padding-bottom": "70px"
     },
     on: {
       submit: function submit($event) {
@@ -2916,83 +2893,32 @@ var render = function render() {
         return _vm.register.apply(null, arguments);
       }
     }
-  }, [_c("span", {
-    staticClass: "login100-form-logo",
-    attrs: {
-      "data-v-6daec649": ""
+  }, [_c("div", {
+    staticClass: "mx-3 p-3 rounded-4 text-center",
+    staticStyle: {
+      "background-color": "#DAE0EE"
     }
-  }, [_c("i", {
-    staticClass: "zmdi zmdi-landscape",
-    attrs: {
-      "data-v-6daec649": ""
+  }, [_c("h1", {
+    staticClass: "fs-2 fw-bold mb-3",
+    staticStyle: {
+      color: "#0069BD"
     }
-  }), _vm._v(" "), _c("img", {
-    attrs: {
-      "data-v-6daec649": "",
-      src: _vm.$asseturl + "frontend/img/20221107_174650.png",
-      width: "60px"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "login100-form-title pt-3 pb-3",
-    attrs: {
-      "data-v-6daec649": ""
-    }
-  }, [_vm._v("\n                        Sign Up\n                    ")]), _vm._v(" "), _c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-6daec649": "",
-      "data-validate": "Enter username"
-    }
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.name,
-      expression: "form.name"
-    }],
-    staticClass: "input100",
-    attrs: {
-      "data-v-6daec649": "",
-      type: "text",
-      name: "name",
-      placeholder: "Name",
-      required: ""
-    },
-    domProps: {
-      value: _vm.form.name
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "name", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "help-block",
-    attrs: {
-      "data-v-6daec649": ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-6daec649": "",
-      "data-validate": "Phone Number"
-    }
-  }, [_c("input", {
+  }, [_vm._v("নিবন্ধন করুন")]), _vm._v(" "), _c("div", {
+    staticClass: "bg-white border-white mb-3 mx-2 p-2 rounded-3"
+  }, [_c("div", {
+    staticClass: "border-bottom input-group pb-2"
+  }, [_vm._m(0), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.mobile,
       expression: "form.mobile"
     }],
-    staticClass: "input100",
+    staticClass: "border-0 form-control",
     attrs: {
-      "data-v-6daec649": "",
-      type: "text",
-      name: "username",
-      placeholder: "Phone Number",
-      required: ""
+      type: "tel",
+      placeholder: "অনুগ্রহ করে ব্যবহারকারীর মোবাইল নাম্বার প্রদান করুনঃ",
+      "aria-describedby": "basic-addon1"
     },
     domProps: {
       value: _vm.form.mobile
@@ -3004,78 +2930,20 @@ var render = function render() {
         _vm.$set(_vm.form, "mobile", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "help-block",
-    attrs: {
-      "data-v-6daec649": ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-6daec649": "",
-      "data-validate": "Refer Code"
-    }
-  }, [_c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.ref_by,
-      expression: "form.ref_by"
-    }],
-    staticClass: "input100",
-    attrs: {
-      "data-v-6daec649": "",
-      type: "text",
-      name: "refer_code",
-      placeholder: "Refer Code",
-      required: ""
-    },
-    domProps: {
-      value: _vm.form.ref_by
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "ref_by", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "help-block",
-    attrs: {
-      "data-v-6daec649": ""
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-6daec649": "",
-      "data-validate": "Enter password"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-eye",
-    staticStyle: {
-      position: "absolute",
-      right: "20px",
-      top: "13px"
-    },
-    attrs: {
-      "data-v-6daec649": "",
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "border-bottom input-group pb-2"
+  }, [_vm._m(1), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.password,
       expression: "form.password"
     }],
-    staticClass: "input100",
+    staticClass: "border-0 form-control",
     attrs: {
-      "data-v-6daec649": "",
       type: "password",
-      name: "pass",
-      placeholder: "Password",
-      required: ""
+      placeholder: " পাসওয়ার্ড ইনপুট করুনঃ",
+      "aria-describedby": "basic-addon1"
     },
     domProps: {
       value: _vm.form.password
@@ -3088,36 +2956,19 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "wrap-input100 validate-input",
-    attrs: {
-      "data-v-6daec649": "",
-      "data-validate": "Enter password"
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-eye",
-    staticStyle: {
-      position: "absolute",
-      right: "20px",
-      top: "13px"
-    },
-    attrs: {
-      "data-v-6daec649": "",
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" "), _c("input", {
+    staticClass: "border-bottom input-group pb-2"
+  }, [_vm._m(2), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.password_confirmation,
       expression: "form.password_confirmation"
     }],
-    staticClass: "input100",
+    staticClass: "border-0 form-control",
     attrs: {
-      "data-v-6daec649": "",
       type: "password",
-      name: "pass",
-      placeholder: "Confirm Password",
-      required: ""
+      placeholder: " পাসওয়ার্ড নিশ্চিত করুনঃ",
+      "aria-describedby": "basic-addon1"
     },
     domProps: {
       value: _vm.form.password_confirmation
@@ -3129,43 +2980,129 @@ var render = function render() {
         _vm.$set(_vm.form, "password_confirmation", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "text-center p-t-90",
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "input-group pb-2"
+  }, [_vm._m(3), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.ref_by,
+      expression: "form.ref_by"
+    }],
+    staticClass: "border-0 form-control",
     attrs: {
-      "data-v-6daec649": ""
+      type: "text",
+      placeholder: "",
+      "aria-describedby": "basic-addon1",
+      required: ""
+    },
+    domProps: {
+      value: _vm.form.ref_by
+    },
+    on: {
+      input: [function ($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "ref_by", $event.target.value);
+      }, _vm.refercheck]
     }
-  }, [_c("p", {
-    staticClass: "text69",
+  })])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("div", {
+    staticClass: "mx-2"
+  }, [_c("button", {
+    staticClass: "btn w-100 text-white rounded-4",
+    staticStyle: {
+      "background-color": "#0069BD"
+    },
     attrs: {
-      "data-v-6daec649": ""
+      type: "button"
     }
-  }, [_vm._v("Have You Account?")]), _vm._v(" "), _c("router-link", {
-    staticClass: "text95",
+  }, [_c("router-link", {
+    staticClass: "text-white",
     attrs: {
       to: {
         name: "/login"
-      },
-      "data-v-6daec649": ""
+      }
     }
-  }, [_vm._v("\n                            Login\n                        ")])], 1)])])])]);
+  }, [_vm._v("প্রবেশ করুন")])], 1)])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
+  return _c("span", {
+    staticClass: "bg-white border-0 input-group-text",
+    attrs: {
+      id: "basic-addon1"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", {
+    staticClass: "bg-white border-0 input-group-text",
+    attrs: {
+      id: "basic-addon1"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-lock"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", {
+    staticClass: "bg-white border-0 input-group-text",
+    attrs: {
+      id: "basic-addon1"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-lock"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", {
+    staticClass: "bg-white border-0 input-group-text",
+    attrs: {
+      id: "basic-addon1"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-person-circle-check"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
   return _c("div", {
-    staticClass: "container-login100-form-btn",
-    attrs: {
-      "data-v-6daec649": ""
-    }
+    staticClass: "mx-2 mb-4"
   }, [_c("button", {
-    staticClass: "login100-form-btn",
+    staticClass: "btn w-100 text-white rounded-4",
+    staticStyle: {
+      "background-color": "#E71B23"
+    },
     attrs: {
-      "data-v-6daec649": "",
-      type: "subimt"
+      type: "submit"
     }
-  }, [_vm._v("\n                            Sign Up\n                        ")])]);
+  }, [_vm._v("নিবন্ধন")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "mb-2 mx-3 text-start"
+  }, [_c("a", {
+    staticStyle: {
+      color: "#168080d0"
+    },
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("ইতিমধ্যে একাউন্ট আছে? ")])]);
 }];
 render._withStripped = true;
 
@@ -3775,9 +3712,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       // settings:{},
-      Frontloader: false,
-      user: {},
-      balanceshow: false
+      Frontloader: false
     };
   },
   methods: {
@@ -3832,35 +3767,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } catch (e) {
         return e.response;
       }
-    },
-    showbalance: function showbalance() {
-      this.balanceshow = true;
-      this.checkbalance();
-    },
-    checkbalance: function checkbalance() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var id, results;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                id = localStorage.getItem('userid');
-                _context2.next = 3;
-                return _this2.callApi('get', "/api/admin/user/".concat(id), []);
-
-              case 3:
-                results = _context2.sent;
-                _this2.user = results.data;
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
     },
     // async settingFun(){
     //         var res = await this.callApi('get',`/api/admin/setting/1`,[]);
@@ -4156,23 +4062,25 @@ var Notification = /*#__PURE__*/function () {
     }
   }, {
     key: "customSuccess",
-    value: function customSuccess(mess) {// new Noty({
-      // 	type: 'success',
-      // 	layout: 'topRight',
-      // 	text: mess,
-      // 	timeout: 2000,
-      // }).show();
-      // this.successSound()
+    value: function customSuccess(mess) {
+      new Noty({
+        type: 'success',
+        layout: 'topRight',
+        text: mess,
+        timeout: 2000
+      }).show();
+      this.successSound();
     }
   }, {
     key: "customError",
-    value: function customError(mess) {// new Noty({
-      // 	type: 'error',
-      // 	layout: 'topRight',
-      // 	text: mess,
-      // 	timeout: 2000,
-      // }).show();
-      // this.errorSound()
+    value: function customError(mess) {
+      new Noty({
+        type: 'error',
+        layout: 'topRight',
+        text: mess,
+        timeout: 2000
+      }).show();
+      this.errorSound();
     }
   }, {
     key: "cart_delete",
@@ -15329,7 +15237,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.languagechange[data-v-2a1c1b9c] {\n    width: 100px;\n    float: right;\n}\nsection.vh-100[data-v-2a1c1b9c] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 100%;\n}\n.blurerror input[data-v-2a1c1b9c] {\n    border: 1px solid red !important;\n}\n.blurerror label[data-v-2a1c1b9c] {\n    color: red !important;\n}\n.blursuccess input[data-v-2a1c1b9c] {\n    border: 1px solid green !important;\n}\n.blursuccess label[data-v-2a1c1b9c] {\n    color: green !important;\n}\n.divider[data-v-2a1c1b9c]:after,\n.divider[data-v-2a1c1b9c]:before {\n    content: \"\";\n    flex: 1;\n    height: 1px;\n    background: #eee;\n}\n*[data-v-2a1c1b9c],\n*[data-v-2a1c1b9c]:focus {\n    outline: none\n}\n\n/* .form{\n  width: 500px;\n  margin: 0 auto;\n  margin-top: 150px;\n  font-family: sans-serif;\n  background: #fff\n} */\n.form-item[data-v-2a1c1b9c] {\n    position: relative;\n    margin-bottom: 15px\n}\n.form-item input[data-v-2a1c1b9c] {\n    display: block;\n    width: 100%;\n    height: 40px;\n    background: transparent;\n    border: solid 1px #ccc;\n    transition: all .3s ease;\n    padding: 0 15px\n}\n.form-item input[data-v-2a1c1b9c]:focus {\n    border-color: blue\n}\n.form-item label[data-v-2a1c1b9c] {\n    position: absolute;\n    cursor: text;\n    z-index: 2;\n    top: 13px;\n    left: 10px;\n    font-size: 12px;\n    font-weight: bold;\n    background: #fff;\n    padding: 0 10px;\n    color: #999;\n    transition: all .3s ease\n}\n.form-item input:focus+label[data-v-2a1c1b9c],\n.form-item input:valid+label[data-v-2a1c1b9c] {\n    font-size: 11px;\n    top: -5px\n}\n.form-item input:focus+label[data-v-2a1c1b9c] {\n    color: blue\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.languagechange[data-v-2a1c1b9c] {\n    width: 100px;\n    float: right;\n}\nsection.vh-100[data-v-2a1c1b9c] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 100%;\n}\n.blurerror input[data-v-2a1c1b9c] {\n    border: 1px solid red !important;\n}\n.blurerror label[data-v-2a1c1b9c] {\n    color: red !important;\n}\n.blursuccess input[data-v-2a1c1b9c] {\n    border: 1px solid green !important;\n}\n.blursuccess label[data-v-2a1c1b9c] {\n    color: green !important;\n}\n.divider[data-v-2a1c1b9c]:after,\n.divider[data-v-2a1c1b9c]:before {\n    content: \"\";\n    flex: 1;\n    height: 1px;\n    background: #eee;\n}\n*[data-v-2a1c1b9c],\n*[data-v-2a1c1b9c]:focus {\n    outline: none;\n}\n\n/* .form{\n  width: 500px;\n  margin: 0 auto;\n  margin-top: 150px;\n  font-family: sans-serif;\n  background: #fff\n} */\n.form-item[data-v-2a1c1b9c] {\n    position: relative;\n    margin-bottom: 15px;\n}\n.form-item input[data-v-2a1c1b9c] {\n    display: block;\n    width: 100%;\n    height: 40px;\n    background: transparent;\n    border: solid 1px #ccc;\n    transition: all 0.3s ease;\n    padding: 0 15px;\n}\n.form-item input[data-v-2a1c1b9c]:focus {\n    border-color: blue;\n}\n.form-item label[data-v-2a1c1b9c] {\n    position: absolute;\n    cursor: text;\n    z-index: 2;\n    top: 13px;\n    left: 10px;\n    font-size: 12px;\n    font-weight: bold;\n    background: #fff;\n    padding: 0 10px;\n    color: #999;\n    transition: all 0.3s ease;\n}\n.form-item input:focus + label[data-v-2a1c1b9c],\n.form-item input:valid + label[data-v-2a1c1b9c] {\n    font-size: 11px;\n    top: -5px;\n}\n.form-item input:focus + label[data-v-2a1c1b9c] {\n    color: blue;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

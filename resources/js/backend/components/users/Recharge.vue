@@ -1,15 +1,16 @@
 <template>
     <div>
 
-        <div class="layout-content">
 
-            <div class="van-nav-bar van-nav-bar--fixed mb-5">
-                <div class="van-nav-bar__content"><div class="van-nav-bar__title van-ellipsis">রিচার্জ</div></div>
+        <section id="topbar">
+            <div class="title">
+                <a href="javascript:void(0)" @click="$router.go(-1)"><i class="fa fa-angle-left"></i></a>
+                <p>{{ $t('Recharge.value') }}</p>
+                <LanguageComponent/>
             </div>
+        </section>
 
-
-
-            <section id="reclist" style="margin-top: 70px">
+        <section id="reclist">
             <div class="details">
                 <div class="container-fluid">
 
@@ -24,8 +25,8 @@
 
                         <p style="color: red;text-align: center;font-size: 17px;">{{ settings.recharagetext }}</p>
 
-                        <button  class="money-btn" style="padding: 8px 14px;font-size: 23px;color: white;"  type="button" disabled v-if="con">Wait...</button>
-                        <button  class="money-btn" style="padding: 8px 14px;font-size: 23px;color: white;"  type="submit" v-else>Submit</button>
+                        <button class="btn btn-info" type="button" disabled v-if="con">Wait...</button>
+                        <button class="btn btn-info" type="submit" v-else>Submit</button>
 
                     </form>
 
@@ -38,14 +39,6 @@
                 </div>
             </div>
         </section>
-
-
-        </div>
-
-
-
-
-
 
 
                 <div class="copyPopup" v-if="popup">

@@ -2141,9 +2141,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       // settings:{},
-      Frontloader: false,
-      user: {},
-      balanceshow: false
+      Frontloader: false
     };
   },
   methods: {
@@ -2198,35 +2196,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } catch (e) {
         return e.response;
       }
-    },
-    showbalance: function showbalance() {
-      this.balanceshow = true;
-      this.checkbalance();
-    },
-    checkbalance: function checkbalance() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var id, results;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                id = localStorage.getItem('userid');
-                _context2.next = 3;
-                return _this2.callApi('get', "/api/admin/user/".concat(id), []);
-
-              case 3:
-                results = _context2.sent;
-                _this2.user = results.data;
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
     },
     // async settingFun(){
     //         var res = await this.callApi('get',`/api/admin/setting/1`,[]);
@@ -2469,23 +2438,25 @@ var Notification = /*#__PURE__*/function () {
     }
   }, {
     key: "customSuccess",
-    value: function customSuccess(mess) {// new Noty({
-      // 	type: 'success',
-      // 	layout: 'topRight',
-      // 	text: mess,
-      // 	timeout: 2000,
-      // }).show();
-      // this.successSound()
+    value: function customSuccess(mess) {
+      new Noty({
+        type: 'success',
+        layout: 'topRight',
+        text: mess,
+        timeout: 2000
+      }).show();
+      this.successSound();
     }
   }, {
     key: "customError",
-    value: function customError(mess) {// new Noty({
-      // 	type: 'error',
-      // 	layout: 'topRight',
-      // 	text: mess,
-      // 	timeout: 2000,
-      // }).show();
-      // this.errorSound()
+    value: function customError(mess) {
+      new Noty({
+        type: 'error',
+        layout: 'topRight',
+        text: mess,
+        timeout: 2000
+      }).show();
+      this.errorSound();
     }
   }, {
     key: "cart_delete",

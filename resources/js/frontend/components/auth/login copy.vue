@@ -1,71 +1,65 @@
 <template>
 
 
-<section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+ <section id="bigbg">
 
 
+    <div class="form login">
+
+<div style="width:100%;overflow: hidden;">
 
 
-
-
-
-
-
-
-        <form @submit.prevent='login'>
-      <div class="form">
-  <h1 class="text-center mb-5">Login</h1>
-  <div class="form-item" id="inputEmail">
-    <input type="text" id="email" v-model="form.email" @blur="blur('email')" @input="blur('email')" autocomplete="off" required >
-    <label for="Email">Email</label>
-  </div>
-
-  <div class="form-item">
-    <input type="password" id="password" v-model="form.password" @blur="blur('password')" @input="blur('password')"   autocomplete="off" required>
-    <label for="password">Password</label>
-  </div>
-
+    <div class="languagechange">
+        <LanguageComponent/>
+</div>
 </div>
 
 
 
 
 
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
-            </div>
 
-          </div>
+        <div class="text-center">
 
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            <img style="width: 126px;margin-bottom: 20px;float: center;" :src="$asseturl+'frontend/img/logos.png?ver=1.0'" alt="">
+        </div>
 
-          </div>
+        <h2 class="text-center" style="font-size:30px;margin-bottom: 16px;">{{ $t('Welcome.value') }}</h2>
 
+        <form @submit.prevent='login' style="padding-bottom: 70px;">
+            <select v-model="country" class="form-control" placeholder="Please Your Country"
+                    @change="addcountry" required>
+                    <option value="">Select</option>
+                    <option v-for="code in codes" :value="code.dial_code">{{ code.name }}</option>
+                </select>
+
+
+           <div class="input">
+            <span style="    width: 55px;
+    padding: 0px 0px 0px 1px;
+    margin-left: 44px;
+    font-size: 16px;">{{ mobileCode }}</span>
+
+            <input type="tel" style="padding-left: 106px;" :placeholder="$t('Enter_phone_number.value')" v-model="form.mobile" required><span><img :src="$asseturl+'frontend/img/user.png'" ></span></div>
+           <div class="input"> <input type="password" :placeholder="$t('Enter_Password.value')" v-model="form.password" required><span><img :src="$asseturl+'frontend/img/pass.png'" ></span></div>
+           <!-- <input type="checkbox" class="checkbox" > <span> Remember Me</span> -->
+
+
+           <!-- <input type="submit" value="Login" class="submit"> -->
+
+
+           <input id="form-submit" type="button" v-if="loadLogin" :value="$t('Loader.value')"
+           class="submit">
+            <input id="form-submit" type="submit" v-else :value="$t('Login.value')" class="submit">
+
+
+
+
+
+<router-link :to="{name:'register'}" class="reg">{{ $t('Register.value') }}</router-link>
         </form>
-      </div>
     </div>
-  </div>
-
 </section>
-
-
-
-
-
 
 
 
@@ -76,18 +70,15 @@
 export default {
 
 	created(){
-		if (User.loggedIn()) {
-            if(localStorage.getItem('role')=='admin'){
-             window.location.href = '/dashboard/adddmin'
-            }else{
-              window.location.href = '/dashboard/user'
-            }
-			// window.location.href = '/dashboard'
-		}
+
+        this.addcountry();
+        this.countryList();
 	},
 
 	data () {
 		return {
+
+
 
             emailLogin: "",
             passwordLogin: "",
@@ -96,46 +87,80 @@ export default {
             confirmReg: "",
             emptyFields: false,
 			form: {
-				email: '',
+				mobile: '',
 				password: ''
 			},
-			errors:{}
+			country:'+880',
+            mobileCode:'',
+			errors:{},
+			codes:{},
+            loadLogin:false
 		}
 	},
 	methods:{
-		login(){
-
-         if (this.form.email == "" || this.form.password == "") {
-            this.emptyFields = true;
-         } else {
-
-       		axios.post('/login', this.form)
-			.then(res => {
-                User.responseAfterLogin(res)
-                if(res.data.role=='admin'){
-                    window.location.href = '/dashboard/adddmin'
-                }else{
-                    window.location.href = '/dashboard/user'
-                }
-
-                Notification.customSuccess('Signed in successfully Complete');
-
-				// this.$router.push({name: 'home'})
-              	// window.location.href = '/dashboard'
-
-                console.log(res)
-			})
-			.catch(error => this.errors = error.response.data.errors)
 
 
+        async countryList() {
+            var res = await this.callApi('get', `${this.$asseturl}CountryCodes.json`, []);
+            // console.log(res)
+            this.codes = res.data
+        },
+        async addcountry() {
+            this.mobileCode = this.country
+        },
 
-         }
+        login() {
+            this.loadLogin = true
+
+            if (this.form.mobile == "" || this.form.password == "") {
+                this.emptyFields = true;
+            } else {
+
+                axios.post('/login', this.form)
+                    .then(res => {
+
+
+                        if (res.data == 0) {
+                            Notification.customError('Please Enter Valid Phone Number and Password');
+                            this.loadLogin = false
+                        } else if (res.data == 422) {
+                            Notification.customError('Your Account Has Been Banded!');
+                            this.loadLogin = false
+                        } else if (res.data == 444) {
+                            Notification.customError('You Cant Login Multiple account same device!');
+                            this.loadLogin = false
+                            localStorage.setItem('dmdevice',1)
+                        } else {
+
+
+
+
+                            localStorage.setItem('dmdevice',1)
+                            User.responseAfterLogin(res)
+                            if (res.data.role == 'admin') {
+                                window.location.href = '/dashboard/adddmin'
+                            } else {
+                                window.location.href = '/dashboard/user'
+                            }
+
+                            Notification.customSuccess('Signed in successfully Complete');
+
+                            // this.$router.push({name: 'home'})
+                            // window.location.href = '/dashboard'
+
+                        }
+                    })
+                    .catch(error => this.errors = error.response.data.errors)
+
+
+
+            }
 
 
 
 
 
-		},
+        },
 
 
         blur(id){
@@ -158,7 +183,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+.languagechange {
+    width: 100px;
+    float: right;
+}
 section.vh-100 {
     position: absolute;
     top: 50%;
