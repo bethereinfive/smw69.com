@@ -43,7 +43,7 @@
 
             <div class="col-md-6">
                 <router-link :to="{name:'Recharge'}">
-                <div class="card" style="    background: #005AAB; margin-bottom: 22px;">
+                <div class="card" style="    background: #639B42; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/recharge.png'" alt="tab" />
                         <h5 class="card-title text-white">{{ $t('Recharge.value') }}</h5>
@@ -57,7 +57,7 @@
 
             <div class="col-md-6">
                 <router-link :to="{name:'Withdraw'}">
-                <div class="card" style="    background: #ED1C24; margin-bottom: 22px;">
+                <div class="card" style="    background: #00ADF1; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/withdraw.png'" alt="tab" />
                         <h5 class="card-title text-white">{{ $t('Withdraw.value') }}</h5>
@@ -68,7 +68,7 @@
 
             <div class="col-md-6">
                 <router-link :to="{name:'invite'}">
-                <div class="card" style="    background: #005AAB; margin-bottom: 22px;">
+                <div class="card" style="    background: #639B42; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/invite.png'" alt="tab" />
                         <h5 class="card-title text-white">{{ $t('Invite.value') }}</h5>
@@ -80,7 +80,7 @@
 
             <div class="col-md-6"  v-if="settings.telegroup">
                 <a :href="settings.telegroup">
-                <div class="card" style="    background: #ED1C24; margin-bottom: 22px;">
+                <div class="card" style="    background: #00ADF1; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/Telegram.png'" alt="tab" />
                         <h5 class="card-title text-white">{{ $t('Official_Telegram_Group.value') }}</h5>
@@ -92,7 +92,7 @@
 
             <div class="col-md-6" v-if="settings.telesupport1">
                 <a :href="settings.telesupport1">
-                <div class="card" style="    background: #005AAB; margin-bottom: 22px;">
+                <div class="card" style="    background: #639B42; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/customerSupport.png'" alt="tab" />
                         <h5 class="card-title text-white">Telegram Channel</h5>
@@ -104,7 +104,7 @@
 
             <div class="col-md-6" v-if="settings.telesupport2">
                 <a :href="settings.telesupport2">
-                <div class="card" style="    background: #ED1C24; margin-bottom: 22px;">
+                <div class="card" style="    background: #00ADF1; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/customerSupport.png'" alt="tab" />
                         <h5 class="card-title text-white">{{ $t('elpLine_Support.value') }}</h5>
@@ -116,7 +116,7 @@
 
             <div class="col-md-6" v-if="settings.telesupport3">
                 <a :href="settings.telesupport3">
-                <div class="card" style="    background: #005AAB; margin-bottom: 22px;">
+                <div class="card" style="    background: #639B42; margin-bottom: 22px;">
                     <div class="card-body">
                         <img width="100%" :src="$asseturl+'frontend/img/customerSupport.png'" alt="tab" />
                         <h5 class="card-title text-white">{{ $t('elpLine_Support.value') }}</h5>
@@ -143,7 +143,7 @@
 
 
           <div class="col-12 p-0" v-for="plan in row" :key="plan.id">
-            <div class="card" :style="{background: 'linear-gradient(rgb(197 25 25 / 91%), rgb(58 8 8 / 59%)),url('+$asseturl+'frontend/img/vipBg.png)',backgroundPosition: 'center center',backgroundSize: 'contain'}"  style="margin-bottom: 20px;">
+            <div class="card" :style="{background: 'linear-gradient(#639B42, #00ADF1),url('+$asseturl+'frontend/img/vipBg.png)',backgroundPosition: 'center center',backgroundSize: 'contain'}"  style="margin-bottom: 20px;">
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title text-white">{{ plan.name }}</h5>
                     <p class="text-white">{{ plan.totalorder }} Orders</p>

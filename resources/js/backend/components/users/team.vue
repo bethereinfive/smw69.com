@@ -17,7 +17,7 @@
 
 
                         <router-link :to="{ name: 'teamdetails' }">
-                            <div class="card text-center"  style="    background: #d10069; margin-bottom: 22px;">
+                            <div class="card text-center"  style="    background: #639B42; margin-bottom: 22px;">
                                 <div class="card-body">
                                     <img width="100px" :src="$asseturl+'frontend/img/Team_details.png'" alt="tab" />
                                     <h5 class="card-title text-white">{{ $t('Team_details.value') }}</h5>
@@ -33,7 +33,7 @@
 
 
                         <router-link :to="{ name: 'teamMember' }">
-                            <div class="card text-center"  style="    background: #ff8500; margin-bottom: 22px;">
+                            <div class="card text-center"  style="    background: #00ADF1; margin-bottom: 22px;">
                                 <div class="card-body">
                                     <img width="100px" :src="$asseturl+'frontend/img/teamMember.png'" alt="tab" />
                                     <h5 class="card-title text-white">{{ $t('Team_members.value') }}</h5>

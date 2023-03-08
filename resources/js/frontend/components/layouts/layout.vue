@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-     props: ['user'],
+     props: ['users'],
     created() {
 
 

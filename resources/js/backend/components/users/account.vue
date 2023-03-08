@@ -172,12 +172,12 @@ a.accountList {
 }
 
 a.accountList.odd {
-    background: #ED1C24 !important;
+    background: #639B42 !important;
 
 }
 
 a.accountList.even {
-    background: #005AAB !important;
+    background: #00ADF1 !important;
 }
 
 

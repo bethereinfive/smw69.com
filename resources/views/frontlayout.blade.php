@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VNSHOPIE Earn Money</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/img/logos.png') }}">
+    <title>welcome to sBc</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/img/20221107_174650.png') }}">
     <!-- Bootstrap CSS -->
-    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" >
-    <link href="{{ asset('frontend/css/style1.css') }}" rel="stylesheet" >
+    {{-- <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" > --}}
+    <link href="{{ asset('frontend/style.css?ver=1.0') }}" rel="stylesheet" >
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" integrity="sha512-ioRJH7yXnyX+7fXTQEKPULWkMn3CqMcapK0NNtCN8q//sW7ZeVFcbMJ9RvX99TwDg6P8rAH2IqUSt2TLab4Xmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-{{-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9489624253487221" crossorigin="anonymous"></script> --}}
 
-    <link rel="stylesheet" href="{{ asset('css/app.css?ver=1.0.0') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div id="app">
@@ -56,19 +56,9 @@ console.log("{{ Auth::user() }}")
                 localStorage.removeItem('role')
                 localStorage.removeItem('position')
         }
-
-        document.addEventListener('touchstart', function (event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-            }, false);
         </script>
-
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" ></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}" ></script>
-    <script src="{{ asset('js/frontend.js?ver=1.0.12') }}"></script>
-
-
-
+    <script src="{{ asset('js/frontend.js?ver=1.0.7') }}"></script>
 </body>
 </html>
