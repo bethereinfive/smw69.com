@@ -17,7 +17,7 @@
     <form @submit.stop.prevent="onSubmit">
 
         <div  class="d-flex flex-style flex-wrap my-5">
-           <!-- <p  class="money-style" :class="{ 'active':form.amount == 400 }" @click="form.amount = 400">400</p> -->
+           <p  class="money-style" :class="{ 'active':form.amount == 200 }" @click="form.amount = 200">200</p>
            <p  class="money-style" :class="{ 'active':form.amount == 500 }" @click="form.amount = 500">500</p>
            <p  class="money-style" :class="{ 'active':form.amount == 1000 }" @click="form.amount = 1000">1000</p>
            <p  class="money-style" :class="{ 'active':form.amount == 2000 }" @click="form.amount = 2000">2000</p>

@@ -203,8 +203,8 @@ export default {
 
 
 
-        if(User.dateformat()[9]<=16){
-            if(User.dateformat()[9]>=10){
+        if(User.dateformat()[9]<=21){
+            if(User.dateformat()[9]>=13){
 
                 setTimeout(() => {
                     if(!this.form.method){
@@ -213,14 +213,14 @@ export default {
                     }
                 }, 5000);
             }else{
-            alert('প্রত্যাহার সময় সকাল ১০টা থেকে বিকাল ৫টা পযর্ন্ত')
+            alert('প্রত্যাহার সময় দুপুর ০২টা থেকে রাত ১০টা পযর্ন্ত')
 
                 this.$router.push({ name: 'Authuser' });
 
 
             }
         }else{
-            alert('প্রত্যাহার সময় সকাল ১০টা থেকে বিকাল ৫টা পযর্ন্ত')
+            alert('প্রত্যাহার সময় দুপুর ০২টা থেকে রাত ১০টা পযর্ন্ত')
             this.$router.push({ name: 'Authuser' });
 
         }
