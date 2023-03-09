@@ -66,11 +66,11 @@ let teamMember = require('./components/users/teamMember.vue').default;
 let teamIntro = require('./components/users/teamIntro.vue').default;
 
 
-let Recharge = require('./components/users/RechargeAmount.vue').default;
-let rechargepage = require('./components/users/RechargePage.vue').default;
-let rechargecheckout = require('./components/users/rechargecheckout.vue').default;
-let rechargesuccess = require('./components/users/rechargesuccess.vue').default;
-let rechargeFailed = require('./components/users/rechargeFailed.vue').default;
+let Recharge = require('./components/users/recharge/RechargeAmount.vue').default;
+let rechargepage = require('./components/users/recharge/RechargePage.vue').default;
+let rechargecheckout = require('./components/users/recharge/rechargecheckout.vue').default;
+let rechargesuccess = require('./components/users/recharge/rechargesuccess.vue').default;
+let rechargeFailed = require('./components/users/recharge/rechargeFailed.vue').default;
 
 
 
