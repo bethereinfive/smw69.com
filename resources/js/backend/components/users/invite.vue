@@ -48,7 +48,7 @@ export default {
           async getData() {
              var id = localStorage.getItem('userid');
             var res = await this.callApi('get', `/api/admin/user/${id}`, []);
-                this.ref = 'https://vnshopie.com/register?ref='+res.data.user.username
+                this.ref = 'https://smw69.com/register?ref='+res.data.user.username
             this.row = res.data;
 
         },

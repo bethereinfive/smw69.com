@@ -49,7 +49,7 @@
 
 
 
-<script src="{{ asset('js/backend.js?ver=1.0.90') }}"></script>
+<script src="{{ asset('js/backend.js?ver=1.0.91') }}"></script>
 
 <script>
     document.addEventListener('touchstart', function (event) {
